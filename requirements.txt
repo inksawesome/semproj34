@@ -1,0 +1,8 @@
+streamlit>=1.55
+mediapipe
+opencv-python
+numpy
+Pillow
+insightface>=1.0.1
+onnxruntime
+python-dotenv
