@@ -211,8 +211,16 @@ elif st.session_state.page == "signin_liveness":
         key="liveness-check",
         mode=WebRtcMode.SENDRECV,
         video_processor_factory=LivenessVideoProcessor,
-        media_stream_constraints={"video": True, "audio": False},
-        async_processing=True,
+        media_stream_constraints={
+            "video": {"width": {"ideal": 1280}, "height": {"ideal": 720}}, 
+            "audio": False
+        },
+        async_processing=False,
+        video_html_attrs={
+            "style": {"width": "100%", "border-radius": "24px", "box-shadow": "0 8px 24px -4px rgba(10,10,10,0.08)"},
+            "controls": False,
+            "autoPlay": True,
+        },
         rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
     )
     
