@@ -1,0 +1,7 @@
+  figure: reports\eval\figures\otp_uniformity.png
+  figure: reports\eval\figures\otp_graph_walk.png
+distinct {'n_secrets': 20000, 'walk_v2': 19781, 'totp': 19790, 'ideal_expected': 19801.336495801625, 'walk_v1_recorded': 768}
+uniformity p 0.13679629985279557 [0.74, 0.204, 0.662, 0.213, 0.624, 0.835]
+binding {'trials': 5000, 'same_code': {'key_bit': 0, 'time_step': 0, 'amount_1c': 0, 'payee': 0, 'reference': 0}, 'mean_digits_changed': {'key_bit': 5.3804, 'time_step': 5.4146, 'amount_1c': 5.4136, 'payee': 5.3892, 'reference': 5.3838}, 'ideal_digits_changed': 5.4, 'seed_avalanche_bits': 0.5002625}
+graph {'nodes': 64, 'edges': 192, 'degree_min': 3, 'degree_max': 10, 'degree_mean': 6.0, 'connected': True, 'diameter': 4, 'avg_path_length': 2.4905753968253967, 'clustering': 0.09270833333333334, 'lattice_clustering': 0.6, 'lattice_avg_path_length': 5.761904761904762, 'lattice_diameter': 11}
+latency {'walk_generate': 1.858543100002862, 'walk_generate_cached_graph': 0.0618834999986575, 'walk_verify_grace': 1.8846123999974225, 'totp_generate': 0.008332564999727765, 'graph_build': 1.945553999976255}

@@ -1,0 +1,82 @@
+{
+ "reps": 5,
+ "camera": "640x480 @ 15 fps",
+ "first_call": {
+  "mediapipe_first_call_ms": 1842.2504999907687,
+  "anti_spoofing_first_call_ms": 462.4792999966303,
+  "arcface_first_call_ms": 4927.9644999915035
+ },
+ "unit": {
+  "liveness_per_frame_ms (landmarks + overlay)": 17.891225000615425,
+  "mediapipe_landmarks_per_frame_ms": 11.239244999160292,
+  "face_crop_per_frame_ms": 10.363109997706488,
+  "anti_spoofing_1_crop_ms": 82.24795999994967,
+  "anti_spoofing_10_crops_ms": 591.4948800025741,
+  "anti_spoofing_10_frames_incl_crop_ms": 870.9316333358098,
+  "arcface_per_frame_640x480_ms": 722.7730199985672,
+  "arcface_5_frames_ms": 4136.60286666224,
+  "explanation_ms": 619.8856333309474,
+  "template_protect_cached_key_ms": 0.017225999908987433,
+  "template_new_key_ms": 76.63780000584666,
+  "otp_generate_ms": 0.6520203997206409
+ },
+ "verify_presence_stages": {
+  "total": {
+   "min": 7757.610899992869,
+   "mean": 8121.968899993226,
+   "max": 8811.36229999538
+  },
+  "face crop (MediaPipe)": {
+   "min": 357.4737000162713,
+   "mean": 402.48955999850295,
+   "max": 456.00029996421654
+  },
+  "anti-spoofing CNN": {
+   "min": 1380.8926999918185,
+   "mean": 1492.7959799999371,
+   "max": 1605.1243000110844
+  },
+  "explanation (Grad-CAM etc.)": {
+   "min": 385.42779999261256,
+   "mean": 422.68161999818403,
+   "max": 526.1690000043018
+  },
+  "ArcFace (detect+align+embed)": {
+   "min": 5377.340200007893,
+   "mean": 5801.111080002738,
+   "max": 6255.509199982043
+  },
+  "template match": {
+   "min": 0.08260000322479755,
+   "mean": 0.10980000079143792,
+   "max": 0.18080000882036984
+  }
+ },
+ "liveness": {
+  "challenge_seconds": [
+   2.93,
+   3.73
+  ],
+  "calibration_frames": 20,
+  "calibration_seconds_at_15fps": 1.3333333333333333
+ },
+ "server_compute_by_combination_ms": {
+  "A": 4136.620092662149,
+  "L": 0.0,
+  "F": 870.9316333358098,
+  "A+L": 4136.620092662149,
+  "A+F": 5007.551725997959,
+  "L+F": 870.9316333358098,
+  "A+L+F": 8121.968899993226
+ },
+ "note": "L runs on every camera frame while the user responds (per-frame cost above); its wall-clock time is the user's response time, not compute. A+L+F = full verify_presence (includes explanation and the continuity checks).",
+ "continuity_extra_ms_estimate": 1664.4909873415895,
+ "cpu": 16,
+ "power": "battery (laptop unplugged, 85 %)",
+ "mains_reference": {
+  "verify_min_s": 4.2,
+  "verify_mean_s": 4.8,
+  "arcface_ms_per_frame": "340-370",
+  "date": "13 Oct 2026"
+ }
+}

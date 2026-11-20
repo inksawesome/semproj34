@@ -1,0 +1,129 @@
+{
+ "config": {
+  "nodes": 64,
+  "lattice_degree": 6,
+  "steps": 16,
+  "digits": 6,
+  "time_step_s": 30,
+  "rewire_p": 0.3
+ },
+ "distinct": {
+  "n_secrets": 20000,
+  "walk_v2": 19781,
+  "totp": 19790,
+  "ideal_expected": 19801.336495801625,
+  "walk_v1_recorded": 768
+ },
+ "uniformity": {
+  "n_codes": 200000,
+  "buckets_100": {
+   "chi2": 114.48800000000001,
+   "dof": 99,
+   "p_value": 0.13679629985279557
+  },
+  "digit_positions": [
+   {
+    "chi2": 5.9942,
+    "dof": 9,
+    "p_value": 0.7404986414466543
+   },
+   {
+    "chi2": 12.166999999999998,
+    "dof": 9,
+    "p_value": 0.20405756559138766
+   },
+   {
+    "chi2": 6.764199999999999,
+    "dof": 9,
+    "p_value": 0.6616543295473173
+   },
+   {
+    "chi2": 12.0034,
+    "dof": 9,
+    "p_value": 0.21311769721934204
+   },
+   {
+    "chi2": 7.1251,
+    "dof": 9,
+    "p_value": 0.6240964282415925
+   },
+   {
+    "chi2": 4.994999999999999,
+    "dof": 9,
+    "p_value": 0.8347439046568034
+   }
+  ],
+  "mean_code": 500159.53592,
+  "ideal_mean": 499999.5
+ },
+ "binding": {
+  "trials": 5000,
+  "same_code": {
+   "key_bit": 0,
+   "time_step": 0,
+   "amount_1c": 0,
+   "payee": 0,
+   "reference": 0
+  },
+  "mean_digits_changed": {
+   "key_bit": 5.3804,
+   "time_step": 5.4146,
+   "amount_1c": 5.4136,
+   "payee": 5.3892,
+   "reference": 5.3838
+  },
+  "ideal_digits_changed": 5.4,
+  "seed_avalanche_bits": 0.5002625
+ },
+ "graph": {
+  "nodes": 64,
+  "edges": 192,
+  "degree_min": 3,
+  "degree_max": 10,
+  "degree_mean": 6.0,
+  "connected": true,
+  "diameter": 4,
+  "avg_path_length": 2.4905753968253967,
+  "clustering": 0.09270833333333334,
+  "degree_histogram": {
+   "7": 11,
+   "4": 11,
+   "5": 11,
+   "10": 2,
+   "6": 11,
+   "9": 3,
+   "3": 5,
+   "8": 10
+  },
+  "lattice_clustering": 0.6,
+  "lattice_avg_path_length": 5.761904761904762,
+  "lattice_diameter": 11
+ },
+ "walk": {
+  "walks": 3000,
+  "visit_degree_corr": 0.9859423268485787,
+  "start_chi2": {
+   "chi2": 53.65333333333333,
+   "dof": 63,
+   "p_value": 0.7932128711141426
+  },
+  "paths_log2": 47.3594000115385,
+  "code_space_log2": 19.931568569324174
+ },
+ "brute_force": {
+  "code_space": 1000000,
+  "attempts_per_transfer": 3,
+  "p_success_per_transfer": 3e-06,
+  "p_success_with_grace_two_valid_codes": 6e-06,
+  "transfers_for_50pct": 231048.71361479143,
+  "replay": "time step <= last accepted step is refused per account and scope (used_otps)"
+ },
+ "latency_ms": {
+  "walk_generate": 1.858543100002862,
+  "walk_generate_cached_graph": 0.0618834999986575,
+  "walk_verify_grace": 1.8846123999974225,
+  "totp_generate": 0.008332564999727765,
+  "graph_build": 1.945553999976255
+ },
+ "javascript_vectors": "12 fixed vectors identical in Python and JavaScript (tests/test_vectors.py)"
+}

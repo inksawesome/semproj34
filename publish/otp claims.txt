@@ -1,0 +1,37 @@
+Claim 1 — The main invention
+A complete authentication system that:
+- Uses an authentication key \(K\) and a separate device-bound secret \(S\).
+- Uses a session nonce \(N\) and device identifier \(D\).
+- Builds and traverses a first weighted graph.
+- Uses the first traversal's result to derive a second graph.
+- Generates a numeric OTP from both traversal records and the secret inputs.
+- Lets the server independently reproduce and verify the OTP without receiving the intermediate graph states.
+This is the main, broad system claim.
+Claim 2 — Recursive graph-state dependency
+The next graph's state depends cryptographically on the previous graph's traversal result. This process can be repeated across multiple graph layers.
+Claim 3 — Specific cryptographic implementation
+Specifies using SHA-256 to hash the first traversal record and HMAC-SHA-256 to derive the seed for the second graph.
+Claim 4 — Continuous deterministic stream
+The same deterministic stream continues from constructing each graph into traversing that graph, without resetting the stream between those operations.
+Claim 5 — Standardized traversal record
+The traversal is recorded in a consistent byte format, so the client and server produce identical records when their states and inputs match.
+Claim 6 — Key-dependent graph parameters
+The authentication key determines graph settings such as the number of vertices, the number of outgoing edges, and the walk length. The document describes a parameter space of 15,360 combinations.
+Claim 7 — Multiple recursive layers
+The system can use two or more sequential graph-and-walk layers, with each later layer depending on the preceding layer's result.
+Privacy, compromise resistance, and verification
+Claim 8 — Intermediate-state non-transmission
+The client and server keep the secrets, graph structures, traversal paths, and intermediate cryptographic values locally. The client sends only the authentication identifier and numeric OTP.
+Claim 9 — Two-secret protection
+The system requires both \(K\) and \(S\) to reconstruct the complete graph-state sequence. The claim addresses an attacker obtaining only one of the two secrets.
+Claim 10 — Independent reconstruction
+The client and server independently perform the same deterministic process using matching inputs, so they can produce the same OTP without exchanging the intermediate graph information.
+Method, software, and devices
+Claim 11 — Independent method claim
+Protects the method of carrying out the authentication process: deriving parameters, generating and traversing graphs, chaining graph states, generating the OTP, verifying it, and marking a successfully used nonce as consumed.
+Claim 12 — Computer-readable medium claim
+Covers software instructions stored on a computer-readable medium that implement the recursive graph-state OTP process.
+Claim 13 — Client authentication system
+Covers the client-side apparatus and its components for storing secrets, constructing graphs, performing traversals, chaining states, and generating the OTP.
+Claim 14 — Server verification system
+Covers the server-side apparatus for storing credentials, independently reconstructing the expected OTP, checking a tolerance window, comparing values safely, and rejecting reuse of a consumed nonce.

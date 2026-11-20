@@ -1,0 +1,422 @@
+{
+ "threshold": 0.4,
+ "identities": 27,
+ "identities_lcc": 25,
+ "probes_genuine": 537,
+ "pairs_impostor": 13962,
+ "failure_to_acquire": {
+  "lcc_real": {
+   "missed": 0,
+   "n": 405,
+   "rate": 0.0
+  },
+  "lcc_spoof": {
+   "missed": 2,
+   "n": 735,
+   "rate": 0.0027210884353741495
+  },
+  "webcam_real": {
+   "missed": 6,
+   "n": 273,
+   "rate": 0.02197802197802198
+  },
+  "webcam_spoof": {
+   "missed": 0,
+   "n": 253,
+   "rate": 0.0
+  }
+ },
+ "raw": {
+  "TP": 523.0,
+  "FN": 14.0,
+  "FP": 0.0,
+  "TN": 13962.0,
+  "accuracy": 0.9990344161666321,
+  "precision": 1.0,
+  "recall": 0.9739292364990689,
+  "f1": 0.9867924528301888,
+  "specificity": 1.0,
+  "FAR": 0.0,
+  "FRR": 0.0260707635009311,
+  "HTER": 0.01303538175046555,
+  "threshold": 0.4,
+  "n_pos": 537,
+  "n_neg": 13962,
+  "APCER": 0.0,
+  "BPCER": 0.0260707635009311,
+  "ACER": 0.01303538175046555,
+  "AUC": 0.9999981327343146,
+  "EER": 0.00028649190660363845,
+  "EER_threshold": 0.1946527063846588,
+  "TAR@FAR=1%": 1.0,
+  "TAR@FAR=0.1%": 1.0,
+  "genuine_mean": 0.8101517798958322,
+  "genuine_std": 0.14609934495268734,
+  "impostor_mean": 0.007913385726312167,
+  "impostor_std": 0.058154263785402296,
+  "impostor_max": 0.26135897636413574,
+  "FRR_ci": [
+   0.015592047685695783,
+   0.04328212175689147
+  ],
+  "FAR_ci": [
+   0.0,
+   0.00027507114215014435
+  ]
+ },
+ "protected": {
+  "TP": 520.0,
+  "FN": 17.0,
+  "FP": 0.0,
+  "TN": 13962.0,
+  "accuracy": 0.9988275053451963,
+  "precision": 1.0,
+  "recall": 0.9683426443202979,
+  "f1": 0.9839167455061495,
+  "specificity": 1.0,
+  "FAR": 0.0,
+  "FRR": 0.03165735567970205,
+  "HTER": 0.015828677839851025,
+  "threshold": 0.4,
+  "n_pos": 537,
+  "n_neg": 13962,
+  "APCER": 0.0,
+  "BPCER": 0.03165735567970205,
+  "ACER": 0.015828677839851025,
+  "AUC": 0.9999933311939804,
+  "EER": 0.002470992694456408,
+  "EER_threshold": 0.20722101628780365,
+  "TAR@FAR=1%": 1.0,
+  "TAR@FAR=0.1%": 0.9981378026070763,
+  "genuine_mean": 0.8049039080933263,
+  "genuine_std": 0.1505758591991706,
+  "impostor_mean": 0.00434211113235288,
+  "impostor_std": 0.07236078121584769,
+  "impostor_max": 0.2856718897819519,
+  "FRR_ci": [
+   0.019857518328961384,
+   0.05011047229897848
+  ],
+  "FAR_ci": [
+   0.0,
+   0.00027507114215014435
+  ]
+ },
+ "attempt_level_protected": {
+  "TP": 103.0,
+  "FN": 1.0,
+  "FP": 0.0,
+  "TN": 2704.0,
+  "accuracy": 0.9996438746438746,
+  "precision": 1.0,
+  "recall": 0.9903846153846154,
+  "f1": 0.9951690821256038,
+  "specificity": 1.0,
+  "FAR": 0.0,
+  "FRR": 0.009615384615384616,
+  "HTER": 0.004807692307692308,
+  "threshold": 0.4,
+  "n_pos": 104,
+  "n_neg": 2704,
+  "APCER": 0.0,
+  "BPCER": 0.009615384615384616,
+  "ACER": 0.004807692307692308,
+  "AUC": 1.0,
+  "EER": 0.0,
+  "EER_threshold": 0.3691496253013611,
+  "TAR@FAR=1%": 1.0,
+  "TAR@FAR=0.1%": 1.0,
+  "genuine_mean": 0.8413951998719802,
+  "genuine_std": 0.1450055930567758,
+  "impostor_mean": 0.004636604561037852,
+  "impostor_std": 0.07216870819060868,
+  "impostor_max": 0.26953867077827454,
+  "FRR_ci": [
+   0.0016993291044208915,
+   0.05246900667694733
+  ],
+  "FAR_ci": [
+   0.0,
+   0.0014186945056165765
+  ]
+ },
+ "attempt_level_n": {
+  "genuine": 104,
+  "impostor": 2704
+ },
+ "attacks_vs_own_template": {
+  "by_identity": {
+   "lcc0": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.7785065665841102
+   },
+   "lcc12": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.8578551158308982
+   },
+   "lcc29": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.8856229394674301
+   },
+   "lcc39": {
+    "n": 38,
+    "accepted": 37,
+    "mean": 0.5554298883990237
+   },
+   "lcc42": {
+    "n": 316,
+    "accepted": 314,
+    "mean": 0.7916820044570332
+   },
+   "lcc43": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.7112340368330479
+   },
+   "lcc48": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.7220311440527439
+   },
+   "lcc5": {
+    "n": 139,
+    "accepted": 139,
+    "mean": 0.9150723819252399
+   },
+   "lcc9": {
+    "n": 40,
+    "accepted": 40,
+    "mean": 0.9485442116856575
+   },
+   "nilay": {
+    "n": 20,
+    "accepted": 19,
+    "mean": 0.498551806807518
+   },
+   "rwitankar": {
+    "n": 233,
+    "accepted": 233,
+    "mean": 0.8379629036899289
+   }
+  },
+  "n": 986,
+  "accepted": 982,
+  "rate": 0.9959432048681541,
+  "ci": [
+   0.9896155534237454,
+   0.9984213203548471
+  ]
+ },
+ "template": {
+  "raw_vs_protected_corr": 0.9694523434939398,
+  "raw_vs_protected_mean_abs_diff": 0.033127999570152236,
+  "same_face_two_keys": {
+   "mean": -0.0016611876750462933,
+   "max_abs": 0.17505168914794922,
+   "n": 133
+  },
+  "revoked_template_scores": {
+   "mean": -0.0014122537585829658,
+   "max": 0.19408077001571655,
+   "accepted": 0,
+   "n": 133
+  },
+  "match_ms": 3.809285000170348,
+  "new_key_transform_ms": 122.63719999464229,
+  "template_bytes": 1024
+ },
+ "enrolment": {
+  "lcc0": [
+   "LCC_FASD_development/real/FT720P_id0_s0_105.png",
+   "LCC_FASD_development/real/FT720P_id0_s0_120.png",
+   "LCC_FASD_development/real/FT720P_id0_s0_135.png",
+   "LCC_FASD_development/real/FT720P_id0_s0_15.png",
+   "LCC_FASD_development/real/FT720P_id0_s0_150.png"
+  ],
+  "lcc115": [
+   "LCC_FASD_development/real/YOUTUBE_id115_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id115_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id115_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id115_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id115_s0_30.png"
+  ],
+  "lcc116": [
+   "LCC_FASD_development/real/YOUTUBE_id116_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id116_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id116_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id116_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id116_s0_150.png"
+  ],
+  "lcc117": [
+   "LCC_FASD_development/real/YOUTUBE_id117_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id117_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id117_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id117_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id117_s0_150.png"
+  ],
+  "lcc118": [
+   "LCC_FASD_development/real/YOUTUBE_id118_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id118_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id118_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id118_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id118_s0_150.png"
+  ],
+  "lcc119": [
+   "LCC_FASD_development/real/YOUTUBE_id119_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id119_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id119_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id119_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id119_s0_150.png"
+  ],
+  "lcc12": [
+   "LCC_FASD_development/real/FT720P_id12_s0_105.png",
+   "LCC_FASD_development/real/FT720P_id12_s0_120.png",
+   "LCC_FASD_development/real/FT720P_id12_s0_135.png",
+   "LCC_FASD_development/real/FT720P_id12_s0_15.png",
+   "LCC_FASD_development/real/FT720P_id12_s0_150.png"
+  ],
+  "lcc120": [
+   "LCC_FASD_development/real/YOUTUBE_id120_s0_102.png",
+   "LCC_FASD_development/real/YOUTUBE_id120_s0_117.png",
+   "LCC_FASD_development/real/YOUTUBE_id120_s0_132.png",
+   "LCC_FASD_development/real/YOUTUBE_id120_s0_147.png",
+   "LCC_FASD_development/real/YOUTUBE_id120_s0_162.png"
+  ],
+  "lcc121": [
+   "LCC_FASD_development/real/YOUTUBE_id121_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id121_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id121_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id121_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id121_s0_150.png"
+  ],
+  "lcc122": [
+   "LCC_FASD_development/real/YOUTUBE_id122_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id122_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id122_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id122_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id122_s0_150.png"
+  ],
+  "lcc123": [
+   "LCC_FASD_development/real/YOUTUBE_id123_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id123_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id123_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id123_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id123_s0_150.png"
+  ],
+  "lcc124": [
+   "LCC_FASD_development/real/YOUTUBE_id124_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id124_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id124_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id124_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id124_s0_150.png"
+  ],
+  "lcc147": [
+   "LCC_FASD_development/real/AGL752VM_id147_s0_105.png",
+   "LCC_FASD_development/real/AGL752VM_id147_s0_120.png",
+   "LCC_FASD_development/real/AGL752VM_id147_s0_135.png",
+   "LCC_FASD_development/real/AGL752VM_id147_s0_15.png",
+   "LCC_FASD_development/real/AGL752VM_id147_s0_150.png"
+  ],
+  "lcc152": [
+   "LCC_FASD_development/real/UNKNOWN_id152_s0_105.png",
+   "LCC_FASD_development/real/UNKNOWN_id152_s0_120.png",
+   "LCC_FASD_development/real/UNKNOWN_id152_s0_135.png",
+   "LCC_FASD_development/real/UNKNOWN_id152_s0_15.png",
+   "LCC_FASD_development/real/UNKNOWN_id152_s0_150.png"
+  ],
+  "lcc161": [
+   "LCC_FASD_development/real/SIC320_id161_s0_105.png",
+   "LCC_FASD_development/real/SIC320_id161_s0_120.png",
+   "LCC_FASD_development/real/SIC320_id161_s0_135.png",
+   "LCC_FASD_development/real/SIC320_id161_s0_15.png",
+   "LCC_FASD_development/real/SIC320_id161_s0_150.png"
+  ],
+  "lcc164": [
+   "LCC_FASD_development/real/MSIGT72_id164_s0_105.png",
+   "LCC_FASD_development/real/MSIGT72_id164_s0_120.png",
+   "LCC_FASD_development/real/MSIGT72_id164_s0_135.png",
+   "LCC_FASD_development/real/MSIGT72_id164_s0_15.png",
+   "LCC_FASD_development/real/MSIGT72_id164_s0_30.png"
+  ],
+  "lcc169": [
+   "LCC_FASD_development/real/PBUNKNOWN_id169_s0_105.png",
+   "LCC_FASD_development/real/PBUNKNOWN_id169_s0_120.png",
+   "LCC_FASD_development/real/PBUNKNOWN_id169_s0_135.png",
+   "LCC_FASD_development/real/PBUNKNOWN_id169_s0_15.png",
+   "LCC_FASD_development/real/PBUNKNOWN_id169_s0_150.png"
+  ],
+  "lcc29": [
+   "LCC_FASD_development/real/YOUTUBE_id29_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id29_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id29_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id29_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id29_s0_30.png"
+  ],
+  "lcc39": [
+   "LCC_FASD_development/real/YOUTUBE_id39_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id39_s0_30.png",
+   "LCC_FASD_development/real/YOUTUBE_id39_s0_47.png",
+   "LCC_FASD_development/real/YOUTUBE_id39_s0_62.png",
+   "LCC_FASD_development/real/YOUTUBE_id39_s0_80.png"
+  ],
+  "lcc42": [
+   "LCC_FASD_development/real/YOUTUBE_id42_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id42_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id42_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id42_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id42_s0_150.png"
+  ],
+  "lcc43": [
+   "LCC_FASD_development/real/YOUTUBE_id43_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id43_s0_124.png",
+   "LCC_FASD_development/real/YOUTUBE_id43_s0_139.png",
+   "LCC_FASD_development/real/YOUTUBE_id43_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id43_s0_154.png"
+  ],
+  "lcc48": [
+   "LCC_FASD_development/real/YOUTUBE_id48_s0_105.png",
+   "LCC_FASD_development/real/YOUTUBE_id48_s0_120.png",
+   "LCC_FASD_development/real/YOUTUBE_id48_s0_135.png",
+   "LCC_FASD_development/real/YOUTUBE_id48_s0_15.png",
+   "LCC_FASD_development/real/YOUTUBE_id48_s0_150.png"
+  ],
+  "lcc5": [
+   "LCC_FASD_development/real/FT720P_id5_s0_105.png",
+   "LCC_FASD_development/real/FT720P_id5_s0_120.png",
+   "LCC_FASD_development/real/FT720P_id5_s0_135.png",
+   "LCC_FASD_development/real/FT720P_id5_s0_15.png",
+   "LCC_FASD_development/real/FT720P_id5_s0_150.png"
+  ],
+  "lcc81": [
+   "LCC_FASD_development/real/IPHONE8B_id81_s0_105.png",
+   "LCC_FASD_development/real/IPHONE8B_id81_s0_120.png",
+   "LCC_FASD_development/real/IPHONE8B_id81_s0_135.png",
+   "LCC_FASD_development/real/IPHONE8B_id81_s0_15.png",
+   "LCC_FASD_development/real/IPHONE8B_id81_s0_150.png"
+  ],
+  "lcc9": [
+   "LCC_FASD_development/real/FT720P_id9_s0_105.png",
+   "LCC_FASD_development/real/FT720P_id9_s0_120.png",
+   "LCC_FASD_development/real/FT720P_id9_s0_135.png",
+   "LCC_FASD_development/real/FT720P_id9_s0_15.png",
+   "LCC_FASD_development/real/FT720P_id9_s0_150.png"
+  ],
+  "nilay": [
+   "data/webcam_captures/real/nilay_real_20261008-161718_crop_00.jpg",
+   "data/webcam_captures/real/nilay_real_20261008-161718_crop_01.jpg",
+   "data/webcam_captures/real/nilay_real_20261008-161718_crop_02.jpg",
+   "data/webcam_captures/real/nilay_real_20261008-161718_crop_03.jpg",
+   "data/webcam_captures/real/nilay_real_20261008-161718_crop_04.jpg"
+  ],
+  "rwitankar": [
+   "data/webcam/real/rwitankar_real_1_00008.jpg",
+   "data/webcam/real/rwitankar_real_1_00012.jpg",
+   "data/webcam/real/rwitankar_real_1_00016.jpg",
+   "data/webcam/real/rwitankar_real_1_00020.jpg",
+   "data/webcam/real/rwitankar_real_1_00024.jpg"
+  ]
+ }
+}

@@ -1,0 +1,48 @@
+splits: {"val": {"n": 672, "real": 137, "sources": ["lcc", "webcam"]}, "train": {"n": 2216, "real": 389, "sources": ["lcc", "webcam"]}, "test": {"n": 634, "real": 153, "sources": ["lcc", "webcam"]}}
+[fused] epoch 1/3 loss 0.4181 val ACER 0.306 AUC 0.932 (327s)
+[fused] epoch 2/3 loss 0.2771 val ACER 0.384 AUC 0.860 (314s)
+[fused] epoch 3/3 loss 0.2589 val ACER 0.387 AUC 0.828 (1327s)
+{
+ "model": "v2 spatial + frequency - webcam test person",
+ "threshold": 0.33,
+ "n": 70,
+ "APCER": 0.25,
+ "BPCER": 0.44,
+ "ACER": 0.345,
+ "AUC": 0.751,
+ "accuracy": 0.6142857142857143,
+ "APCER_by_attack": {
+  "phone": 0.25
+ },
+ "video_level": {
+  "n": 2,
+  "APCER": 0.0,
+  "BPCER": 0.0,
+  "ACER": 0.0
+ }
+}
+[spatial] epoch 1/3 loss 0.4087 val ACER 0.291 AUC 0.923 (326s)
+[spatial] epoch 2/3 loss 0.2778 val ACER 0.385 AUC 0.746 (317s)
+[spatial] epoch 3/3 loss 0.2600 val ACER 0.391 AUC 0.787 (304s)
+{
+ "model": "v2 spatial only - webcam test person",
+ "threshold": 0.205,
+ "n": 70,
+ "APCER": 0.1,
+ "BPCER": 0.3,
+ "ACER": 0.2,
+ "AUC": 0.9019999999999999,
+ "accuracy": 0.7571428571428571,
+ "APCER_by_attack": {
+  "phone": 0.1
+ },
+ "video_level": {
+  "n": 2,
+  "APCER": 0.0,
+  "BPCER": 0.0,
+  "ACER": 0.0
+ }
+}
+[freq] epoch 1/3 loss 0.5451 val ACER 0.318 AUC 0.711 (260s)
+[freq] epoch 2/3 loss 0.4307 val ACER 0.233 AUC 0.845 (296s)
+[freq] epoch 3/3 loss 0.3974 val ACER 0.248 AUC 0.839 (256s)

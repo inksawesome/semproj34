@@ -1,7 +1,28 @@
+import threading
+
 import cv2
 import numpy as np
 import mediapipe as mp
-face_mesh = mp.solutions.face_mesh
+from mediapipe.tasks.python import vision
+from mediapipe.tasks.python.core.base_options import BaseOptions
+
+_GLOBAL_LANDMARKER = None
+
+# Serialises MediaPipe inference across threads (WebRTC worker + Streamlit script thread).
+MP_LOCK = threading.RLock()
+
+def get_landmarker():
+    global _GLOBAL_LANDMARKER
+    if _GLOBAL_LANDMARKER is None:
+        base_options = BaseOptions(model_asset_path='face_landmarker.task')
+        options = vision.FaceLandmarkerOptions(
+            base_options=base_options,
+            num_faces=1,
+            min_face_detection_confidence=0.5,
+            min_face_presence_confidence=0.5,
+            min_tracking_confidence=0.5)
+        _GLOBAL_LANDMARKER = vision.FaceLandmarker.create_from_options(options)
+    return _GLOBAL_LANDMARKER
 
 
 # ============================================================
@@ -19,20 +40,15 @@ def detect_and_crop_face(image_rgb):
 
     height, width, _ = image_rgb.shape
 
-    with face_mesh.FaceMesh(
-        static_image_mode=True,
-        max_num_faces=1,
-        refine_landmarks=True,
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5,
-    ) as mesh:
+    with MP_LOCK:
+        landmarker = get_landmarker()
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=np.ascontiguousarray(image_rgb))
+        results = landmarker.detect(mp_image)
 
-        results = mesh.process(image_rgb)
-
-    if not results.multi_face_landmarks:
+    if not results.face_landmarks:
         return None, None
 
-    landmarks = results.multi_face_landmarks[0].landmark
+    landmarks = results.face_landmarks[0]
 
     # --------------------------------------------------------
     # Get face bounding box from all landmarks

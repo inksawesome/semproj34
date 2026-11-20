@@ -1,0 +1,460 @@
+School of Computer Science Engineering and Information Systems
+Fall Semester 2026-2027
+Department of Information Technology
+BITE497J - Project - I
+Review -1
+Date: 19.8.2026
+Design of an Authentication System Using Fractal Geometry with Graph-
+Based Random-Walk OTP Generation
+23BIT0319 - Magizharasan K
+23BIT0334 - Nilay Kant Shahi
+23BIT0335 - Rwitankar Giri
+Under the Guidance of
+Mohanraj G
+Assistant Professor Senior Grade 2
+SCORE
+Guide Signature with date
+Internal Examiner -1 Internal Examiner-2
+ABSTRACT
+Conventional authentication systems that rely on static passwords or single-factor One-Time Passwords
+(OTPs) remain vulnerable to credential theft, replay attacks, and biometric template compromise. This
+project proposes a multi-factor authentication system that combines facial biometrics enhanced with
+fractal-geometry-based feature extraction and template protection, together with a novel second-factor
+OTP mechanism generated via random walks on a graph rather than conventional HMAC-based schemes.
+During enrolment, a user's facial embedding is combined with fractal-dimension features (derived using
+box-counting / iterated-function-system techniques) and passed through a fractal transform to produce
+a non-invertible, cancelable protected template stored in the database. During login, the same pipeline
+is repeated, an AI-based anti-spoofing (liveness) check is performed, and, upon a successful match, a
+second-factor OTP is required. This OTP is generated independently on both the server and a trusted
+client device from a shared secret and a synchronised time-step, using a deterministic random walk over
+a shared graph structure whose traversal path is encoded and truncated into a 6-digit code, analogous
+to RFC 6238 TOTP but with the walk replacing HMAC as the core pseudo-random function. This report
+presents the literature review, problem statement, objectives, proposed system, methodology, software
+requirements, system architecture and UML design for the project, along with the current
+implementation status of the random-walk OTP engine and the face-capture/biometric pipeline.
+Keywords: Fractal Geometry, Biometric Authentication, Template Protection, Graph Random Walk, One-
+Time Password, Multi-Factor Authentication, Liveness Detection, Chaotic Systems.
+1. INTRODUCTION
+Digital identity verification increasingly relies on multi-factor authentication (MFA) to counter the well-
+known weaknesses of static passwords. Biometric modalities such as face recognition offer convenience
+but introduce their own risks: unlike a password, a compromised biometric template cannot simply be
+reset, and stored raw feature vectors are subject to reconstruction and cross-matching attacks.
+Meanwhile, the dominant second-factor mechanism in use today, the Time-based One-Time Password
+(TOTP), depends on HMAC-based pseudo-random generation from a shared secret and time counter.
+This project investigates whether concepts from fractal geometry, specifically fractal-dimension feature
+extraction and chaotic/fractal transforms, can be used both to strengthen facial-template protection
+and to seed an alternative OTP-generation mechanism based on random walks over a graph structure.
+The two originally separate project ideas (fractal-geometry-based authentication and graph-random-
+walk OTP generation) have been merged into a single, coherent authentication pipeline, where the
+fractal module supplies the entropy/transform layer and the graph-walk module supplies the second-
+factor mechanism.
+2. PROBLEM STATEMENT
+Existing single-factor and even many multi-factor authentication systems suffer from three related
+weaknesses: (i) biometric templates are frequently stored with insufficient protection, exposing users to
+irrevocable identity compromise if a database is breached; (ii) conventional OTP mechanisms rely on a
+small, well-studied set of pseudo-random constructions (primarily HMAC-based TOTP/HOTP), making
+them a predictable and heavily-targeted attack surface; and (iii) face-based login alone is susceptible to
+presentation attacks (photos, replayed video, masks) unless combined with robust liveness detection
+and a genuinely independent second factor. There is a need for an authentication design that protects
+biometric templates using a non-invertible transform, and that generates second-factor codes using an
+alternative, less conventional pseudo-random mechanism while remaining synchronisable between
+server and client without constant network communication.
+3. OBJECTIVES
+• To design a facial authentication pipeline that combines standard face-recognition embeddings
+with fractal-geometry-derived features (e.g., fractal dimension via box-counting) for enrolment
+and login.
+• To design and implement a fractal-transform-based protected template mechanism that stores
+a non-invertible, cancelable representation of the enrolled biometric rather than the raw
+embedding.
+• To design and implement an AI-based anti-spoofing (liveness detection) stage that prevents
+presentation attacks (photos, replay video, masks) from passing the login check.
+• To design and implement a second-factor OTP-generation mechanism based on random walks
+over a graph, seeded by a shared secret and a synchronised time-step, such that server and
+client can independently compute matching OTPs without a network round-trip for generation.
+• To integrate the biometric-authentication pipeline and the random-walk OTP engine into a
+single end-to-end login flow, and evaluate its correctness, refresh behaviour, and resistance to
+basic replay/expiry conditions.
+4. SCOPE OF THE PROJECT
+The scope of this project (Review-1 stage) covers: (a) a working random-walk-based OTP generation and
+verification engine (server + client, TOTP-style independent generation), which is currently implemented
+and demonstrable; (b) a face-capture and biometric-embedding pipeline, currently under active
+development and testing; (c) the design (architecture, methodology, UML) of the fractal-feature-
+extraction and fractal-transform/template-protection module, which is planned for the next
+implementation phase; and (d) the design of the anti-spoofing and second-factor integration flow.
+Large-scale performance benchmarking, formal security-proofs of the fractal transform, and production-
+grade deployment (e.g., HSM-backed key storage) are out of scope for this stage and are noted as future
+work.
+5. PROPOSED SYSTEM
+The proposed system consists of two integrated stages, Registration and Login, described below.
+Registration: Email → Email Verification → Face Capture → Face + Fractal Feature Extraction → Fractal
+Transform (per-user key) → Create Protected Template → Database. On first successful login, the device
+is additionally enrolled as a trusted device by exchanging a shared OTP secret (K) over the already-
+authenticated session.
+Login: Webcam → Face Capture → Face + Fractal Feature Extraction → Apply the same Fractal
+Transform → Compare against the stored Protected Template, in parallel with AI Anti-Spoofing (liveness)
+→ if REAL and MATCH, proceed to the Second Factor (OTP) stage; otherwise reject → Random-Walk OTP
+is computed independently on the server and on the trusted client device from the shared secret and
+the current time-step → OTP verified → Session granted.
+This design gives fractal geometry two functional roles: (1) an auxiliary texture/feature signal alongside
+the face embedding, and (2) the non-invertible transform used to create the protected template, which
+is the mechanism that makes the stored template cancelable and resistant to reconstruction/cross-
+matching attacks.
+6. LITERATURE SURVEY (minimum 15 papers)
+Follow APA format. The 15 papers below are organised under the project's three functional areas: (1)
+Fractal Geometry, Biometrics & Template Protection, (2) Graph Theory, PRNG & OTP Generation, and (3)
+Face Authentication, Liveness Detection & Multi-Factor Authentication.
+S.No. Title Merits Demerits
+1
+Using the Different Maps to Design and
+Implement a Chaotic Cryptographic
+Scheme for Image Encryption
+Investigates multiple chaotic maps
+for image encryption, evaluated for
+randomness, sensitivity to initial
+conditions, histogram
+characteristics and encryption
+performance; demonstrates strong
+confusion, diffusion and key
+sensitivity.
+Focused on image encryption only;
+does not derive cryptographic
+parameters from biometric features
+or use the resulting secret for OTP
+generation.
+2 Face Recognition and Facial Expression
+Identification Using PCA
+Applies Principal Component
+Analysis to reduce facial-image
+dimensionality and extract
+discriminative features for
+recognition and expression
+classification; produces compact,
+effective facial representations.
+Primarily a feature-extraction
+technique; does not protect
+biometric templates and does not
+incorporate fractal or chaotic
+security mechanisms.
+3
+Fuzzy Vault Revisited – Enabling Privacy-
+Preserving Multi-Modal Biometric
+Authentication
+Proposes an improved fuzzy-vault
+template-protection scheme (OKVS
++ multi-threshold secret sharing) for
+multimodal biometrics, improving
+privacy and reducing auxiliary-
+storage overhead.
+Relatively complex; not based on
+fractal/chaotic transformations and
+does not connect protected
+biometric data to a graph-based
+OTP mechanism.
+4
+A New Dorsal Hand Vein Authentication
+System Based on Fractal Dimension Box
+Counting Method
+Extracts fractal-dimension features
+from dorsal hand-vein images using
+the box-counting method and
+classifies them with KNN/SVM;
+shows fractal dimension effectively
+represents biometric structural
+patterns.
+Focused on hand-vein biometrics,
+not facial biometrics; fractal
+features used for recognition rather
+than cryptographic template
+protection, and needs specialised
+NIR imaging.
+S.No. Title Merits Demerits
+5 Fast Simple Image Encryption Technique
+Based on Chaos Based System
+Uses multiple chaotic maps to
+generate encryption parameters
+and perform confusion/diffusion,
+exploiting sensitivity to initial
+conditions for efficient, strongly
+randomised encryption.
+Designed for image encryption, not
+biometric authentication; does not
+derive parameters from biometric
+features or address second-factor
+authentication.
+6
+FPGA Implementation and Comparative
+Analysis of Chaotic Map Based Pseudo
+Random Number Generators
+Compares Logistic, Tent, Bernoulli,
+Zigzag and Sine maps for PRNG
+using bifurcation diagrams,
+Lyapunov exponents and entropy
+measures; shows FPGA
+implementation potential.
+Focused on chaotic PRNGs, not
+graph-based random walks; does
+not investigate OTP generation or
+biometric-derived seeds.
+7 Graph Theory Matrix Approach in
+Cryptography and Network Security
+Explores graph theory and matrix
+representations applied to
+cryptographic and network-security
+problems, providing a theoretical
+foundation for graph-based security
+mechanisms.
+A general graph-cryptography
+approach rather than a specific
+random-walk OTP generator; no
+integration with biometric
+authentication or fractal secrets.
+8
+Dynamic Website Authentication Using
+Time-Based One-Time Password (TOTP)
+for Enhanced Security
+Implements TOTP where a shared
+secret and time counter generate
+periodically changing OTPs, verified
+during website authentication;
+demonstrates a practical, effective
+second factor.
+Conventional TOTP relies on a time
+counter and shared secret; does not
+use graph traversal/random walks
+or biometric/fractal-derived secrets.
+9
+Secure Multi-Factor One-Time Password
+Generation using PyOTP, SHA-512, and
+AES-256 Encryption
+Combines PyOTP with SHA-512
+hashing and AES-256 encryption to
+secure authentication data,
+strengthening OTP-based multi-
+factor authentication with
+established primitives.
+Uses conventional
+OTP/cryptographic primitives rather
+than graph-based pseudo-random
+generation; no investigation of
+random walks or biometric-derived
+seeds.
+10
+Secure Chaotic Image Encryption Method
+Using Random Graph Traversal and
+Three Step Diffusion
+Combines chaotic maps, random
+graph traversal, secure hashing and
+three-step diffusion for image
+encryption; shows random graph
+traversal can be combined
+effectively with chaotic
+transformations.
+Application limited to image
+encryption; random graph traversal
+not used for OTP generation, and
+identity/time-dependent second
+factors are not addressed.
+11 CNN-Based Anti-Spoofing Two-Tier Multi-
+Factor Authentication System
+Combines face recognition, CNN-
+based feature extraction, anti-
+spoofing and MFA in a two-tier
+architecture; CNN classification
+screens genuine vs. spoofed faces
+before authentication proceeds.
+CNN performance depends heavily
+on training-data quality/diversity;
+may struggle with deepfakes/high-
+quality masks, and computation
+may hinder low-resource
+deployment.
+12 Learning Deep Models for Face Anti-
+Spoofing: Binary or Auxiliary Supervision
+Compares binary vs. auxiliary
+supervision for deep-learning anti-
+spoofing; auxiliary supervision
+(depth, rPPG) improves feature
+learning and generalisation over
+simple binary classification.
+Requires large, diverse datasets and
+auxiliary signals (e.g., depth maps)
+not available from ordinary
+cameras; performance drops on
+previously unseen attacks.
+13 LiveNet: Improving Features Proposes a CNN architecture Requires substantial computation
+S.No. Title Merits Demerits
+Generalization for Face Liveness
+Detection Using Convolutional Neural
+Networks
+(LiveNet) that learns discriminative
+live-vs-spoof representations,
+emphasising generalisation across
+datasets and attack scenarios.
+and training data; generalisation
+still affected by illumination,
+camera characteristics and
+unknown attacks.
+14 A Comparative Analysis of Biometrics
+Types: Literature Review
+Reviews face, fingerprint, iris, voice
+and other modalities on accuracy,
+usability and security; establishes
+that biometrics outperform
+passwords, with face being
+contactless and convenient.
+Different modalities carry different
+vulnerabilities; face remains
+susceptible to spoofing/illumination
+issues, and no specific anti-
+spoofing/MFA mechanism is
+proposed.
+15
+Presentation Attack Detection Methods
+for Face Recognition Systems: A
+Comprehensive Survey
+Surveys texture-, motion-, depth-
+and deep-learning-based
+Presentation Attack Detection
+methods, covering printed-photo,
+replay-video and mask attacks;
+highlights deep learning as
+promising.
+Many PAD methods generalise
+poorly to unknown attacks; some
+require specialised sensors or large
+datasets, and environmental
+variation remains a real-world
+challenge.
+6.1 FINDINGS IN LITERATURE SURVEY
+Across Topic 1, chaotic maps and fractal-dimension features are consistently shown to provide high
+sensitivity to initial conditions and strong randomness properties, useful both for image-level encryption
+and for biometric feature representation, but no reviewed work combines fractal features with formal
+biometric template-protection schemes such as fuzzy vaults - this is the specific gap the project
+addresses. Across Topic 2, existing OTP literature is dominated by conventional HMAC-based
+TOTP/HOTP constructions and standard cryptographic primitives (SHA-512, AES-256); graph-theoretic
+and random-graph-traversal ideas exist and have been applied to image encryption, but have not been
+applied to OTP generation - the second gap this project addresses. Across Topic 3, CNN-based anti-
+spoofing and multi-factor architectures are well studied and provide a strong basis for the liveness-
+detection stage of the proposed login flow, confirming that this component of the design is feasible
+using established techniques.
+7. METHODOLOGY
+• Enrolment: capture face image, extract face embedding and fractal-dimension features (box-
+counting method on facial texture), and pass the combined feature vector through a fractal
+transform seeded by a per-user key to produce a protected, non-invertible template stored in
+the database.
+• Liveness detection: apply an AI-based anti-spoofing model to the captured frame(s) in parallel
+with face matching, classifying the input as REAL or SPOOF before allowing progression to the
+second factor.
+• Trusted-device enrolment: on first successful login, generate a random shared secret K and
+exchange it once with the client device over the authenticated session (analogous to
+TOTP/Google-Authenticator pairing).
+• OTP generation (Model B - independent generation): both server and client compute a time-
+step T = floor(current_time / time_step); derive a seed from K and T; run a deterministic random
+walk of fixed length over a shared graph structure from a seed-determined start node; encode
+the visited-node path into a byte string; truncate/hash it into a 6-digit numeric OTP, refreshed
+every 30-60 seconds and invalidated on time-step rollover.
+• Verification: the server compares the OTP submitted by the user against the OTP(s) expected for
+T-1, T, T+1 (to tolerate minor clock drift), rejects reused/expired codes, and grants the session
+only if both the biometric match and OTP verification succeed.
+•
+8. SOFTWARE REQUIREMENTS: Functional and Non-Functional
+Requirements
+Functional Requirements
+• The system shall allow a user to register with an email address, verify it, and capture a face
+image for enrolment.
+• The system shall extract face and fractal-dimension features and store only a protected
+(transformed) template, never the raw embedding.
+• The system shall perform liveness detection on every login attempt before allowing a biometric
+match to succeed.
+• The system shall generate a 6-digit OTP on the server and independently on the trusted client
+device, refreshed every 30-60 seconds.
+• The system shall verify the submitted OTP against the expected value(s) within the tolerance
+window and reject expired/reused codes.
+Non-Functional Requirements
+• Security: the shared OTP secret (K) must never be transmitted or logged after the initial
+enrolment exchange; all transport must use TLS.
+• Performance: OTP generation and biometric matching should complete within a few seconds to
+remain usable at login time.
+• Usability: the login flow (face capture, liveness check, OTP entry) should require minimal user
+action beyond looking at the camera and reading a 6-digit code.
+• Reliability: the system should tolerate small clock-drift between server and client without falsely
+rejecting valid OTPs.
+9. SYSTEM ARCHITECTURE
+Fig. 9.1 System Architecture
+As shown in Fig. 9.1, the client interacts with a registration/login web interface that drives the face-
+capture and recognition module. Fractal feature extraction feeds both the protected-template engine
+(used at enrolment and for comparison at login) and the anti-spoofing stage. On a successful REAL-and-
+MATCH result, control passes to the OTP layer, where the server and the trusted client device each
+independently derive the OTP from the shared graph structure and secret, and the verification step
+grants the session.
+9.1 Current Implementation Status
+At this review stage, the random-walk OTP engine is implemented and functional end-to-end (server
+generation, client verification, periodic refresh/invalidation), while the fractal-geometry feature-
+extraction and template-protection module is under active development; the face-capture and
+biometric-embedding pipeline has been implemented and is currently being tested. This matches the
+expected ~50% implementation checkpoint for this review.
+Fig. 9.2 Server-side random-walk OTP generator (Graph Walk, 64 nodes, 16 steps), refreshing every 30s
+Fig. 9.3 Client-side OTP verification portal
+Fig. 9.4 Terminal output of the biometric embedding pipeline test (successful run)
+Fig. 9.5 Face-capture module under test - a no-face-detected case, showing the detection/validation step being
+exercised during development
+10. UML DIAGRAMS
+10.1 Use Case Diagram
+Fig. 10.1 Use Case Diagram
+10.2 Class
+Diagram
+
+Fig. 10.2 Class Diagram
+11. SUMMARY
+This report presents the design of a merged authentication system that uses fractal geometry both for
+facial-feature extraction/template protection and, together with random walks on a graph, for second-
+factor OTP generation. The literature review across three focus areas (fractal/chaotic biometric
+protection, graph-based OTP generation, and face liveness/MFA) confirms the individual techniques are
+well established while the specific combination proposed here is not directly covered in existing work,
+motivating the project's approach. At this review stage, the random-walk OTP engine is implemented
+and demonstrable, the biometric pipeline is implemented and under test, and the fractal-transform
+module is designed and scheduled for the next implementation phase, in line with the expected 50%
+implementation checkpoint for Review-1.
+REFERENCES (minimum 15 papers)
+[1] Raja, V. R., Rajakumar, M. P., Balasubramani, M., Raj, M. S. M., Kothandaraman, I., & Joel, M. R. (2025).
+Using the different maps to design and implement a chaotic cryptographic scheme for image encryption. 2025 6th
+International Conference on Data Intelligence and Cognitive Informatics (ICDICI), 407–412.
+https://doi.org/10.1109/ICDICI66477.2025.11135012
+[2] Meher, S. S., & Maben, P. (2014). Face recognition and facial expression identification using PCA. 2014 4th
+IEEE International Advance Computing Conference (IACC), 1093–1098.
+https://doi.org/10.1109/IAdCC.2014.6779478
+[3] Zhang, B., Hu, S., Wang, Z., & Ren, K. (2025). Fuzzy Vault Revisited – Enabling Privacy-Preserving Multi-
+Modal Biometric Authentication. IEEE Transactions on Dependable and Secure Computing.
+https://doi.org/10.1109/TDSC.2025.3627218
+[4] Çimen, M. E., Boyraz, Ö. F., Yıldız, M. Z., & Boz, A. F. (2021). A new dorsal hand vein authentication system
+based on fractal dimension box counting method. Optik, 226, 165438. https://doi.org/10.1016/j.ijleo.2020.165438
+[5] Diab, T. O., Al Sobky, W. I., Zaky, H. N., Mahmoud, A. K., Serag Eldin, S. M., & Hogo, M. A. (2023). Fast
+simple image encryption technique based on chaos based system. 2023 International Telecommunications
+Conference (ITC-Egypt). https://doi.org/10.1109/ITC-Egypt58155.2023.10206390
+[6] Rajesh, K., Victor Du John Herold, H., & Tamilselvan, A. (2026). FPGA implementation and comparative
+analysis of chaotic map based pseudo random number generators. 2026 8th International Conference on Devices,
+Circuits and Systems (ICDCS). https://doi.org/10.1109/ICDCS68853.2026.11510936
+[7] Kannaiyan, G. N., & Veerubommu, R. (2022). Graph theory matrix approach in cryptography and network
+security. 2022 Algorithms, Computing and Mathematics Conference (ACM), 108–110.
+https://doi.org/10.1109/ACM57404.2022.00025
+[8] Gunalan, M. C., Bavani, K., Hayden, M., Manoj Hariharan, R., & Rahul, S. (2025). Dynamic website
+authentication using time-based one-time password (TOTP) for enhanced security. 2025 International Conference on
+Data Science, Agents and Artificial Intelligence (ICDSAAI).
+https://doi.org/10.1109/ICDSAAI65575.2025.11011563
+[9] Akash, S., & Gokila, S. (2025). Secure multi-factor one-time password generation using PyOTP, SHA-512, and
+AES-256 encryption. 2025 Third International Conference on Augmented Intelligence and Sustainable Systems
+(ICAISS), 478–483. https://doi.org/10.1109/ICAISS61471.2025.11041781
+[10] Agarwal, V., & Kumar, D. (2023). Secure chaotic image encryption method using random graph traversal and
+three step diffusion. Multimedia Tools and Applications, 83(16). https://doi.org/10.1007/s11042-023-17418-y
+[11] Sajjad, M., Khan, S., Hussain, T., Muhammad, K., Sangaiah, A. K., Castiglione, A., Esposito, C., & Baik, S. W.
+(2019). CNN-based anti-spoofing two-tier multi-factor authentication system. Pattern Recognition Letters, 126,
+123–131. https://doi.org/10.1016/j.patrec.2018.02.015
+[12] Liu, Y., Jourabloo, A., & Liu, X. (2018). Learning deep models for face anti-spoofing: Binary or auxiliary
+supervision. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 389–398.
+[13] Rehman, Y. A. U., Po, L. M., & Liu, M. (2018). LiveNet: Improving features generalization for face liveness
+detection using convolution neural networks. Expert Systems with Applications, 108, 159–169.
+https://doi.org/10.1016/j.eswa.2018.05.004
+[14] Al Rousan, M. S., & Intrigila, B. (2020). A comparative analysis of biometrics types: Literature review. Journal
+of Computer Science, 16, 1778–1788. https://doi.org/10.3844/jcssp.2020.1778.1788
+[15] Ramachandra, R., & Busch, C. (2017/2018). Presentation attack detection methods for face recognition systems:
+A comprehensive survey. ACM Computing Surveys, 50(1), 1–37. https://doi.org/10.1145/3038924

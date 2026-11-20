@@ -148,3 +148,34 @@ def get_request_status(token):
         return None
 
     return request["status"]
+
+def smtp_configured():
+    return bool(SMTP_USERNAME and SMTP_PASSWORD)
+
+
+def send_code_email(email, code):
+    """
+    Send a 6-digit verification code. Returns (sent: bool, error: str | None).
+    The code is typed back into the same browser session, so no public
+    callback URL is needed.
+    """
+
+    if not smtp_configured():
+        return False, "SMTP is not configured in .env"
+
+    message = EmailMessage()
+    message["Subject"] = f"VaultTrust verification code: {code}"
+    message["From"] = EMAIL_FROM
+    message["To"] = email
+    message.set_content(
+        f"Your VaultTrust verification code is {code}.\n\n"
+        "It expires in 10 minutes. If you did not try to open an account, ignore this email."
+    )
+
+    try:
+        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=15) as server:
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+            server.send_message(message)
+        return True, None
+    except Exception as e:
+        return False, str(e)

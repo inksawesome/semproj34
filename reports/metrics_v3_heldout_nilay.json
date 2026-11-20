@@ -1,0 +1,170 @@
+{
+ "generated_at": "2026-10-08 21:42",
+ "splits": {
+  "val": {
+   "n": 672,
+   "real": 137,
+   "sources": [
+    "lcc",
+    "webcam"
+   ]
+  },
+  "train": {
+   "n": 2216,
+   "real": 389,
+   "sources": [
+    "lcc",
+    "webcam"
+   ]
+  },
+  "test": {
+   "n": 614,
+   "real": 143,
+   "sources": [
+    "lcc",
+    "webcam"
+   ]
+  }
+ },
+ "results": [
+  {
+   "model": "v1 original (frozen, no split)",
+   "threshold": 0.5,
+   "n": 614,
+   "APCER": 0.03821656050955414,
+   "BPCER": 0.11888111888111888,
+   "ACER": 0.0785488396953365,
+   "AUC": 0.9670690243938651,
+   "accuracy": 0.9429967426710097,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.0368763557483731,
+    "phone": 0.1
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.375,
+    "BPCER": 0.0,
+    "ACER": 0.1875
+   }
+  },
+  {
+   "model": "v2 spatial + frequency",
+   "threshold": 0.235,
+   "n": 614,
+   "APCER": 0.6157112526539278,
+   "BPCER": 0.06993006993006994,
+   "ACER": 0.34282066129199884,
+   "AUC": 0.8322717622080679,
+   "accuracy": 0.511400651465798,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.6268980477223427,
+    "phone": 0.1
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.75,
+    "BPCER": 0.0,
+    "ACER": 0.375
+   }
+  },
+  {
+   "model": "v2 spatial + frequency @0.5",
+   "threshold": 0.5,
+   "n": 614,
+   "APCER": 0.3375796178343949,
+   "BPCER": 0.24475524475524477,
+   "ACER": 0.2911674312948198,
+   "AUC": 0.8322717622080679,
+   "accuracy": 0.6840390879478827,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.34490238611713664,
+    "phone": 0.0
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.625,
+    "BPCER": 0.125,
+    "ACER": 0.375
+   }
+  },
+  {
+   "model": "v2 spatial + frequency - webcam test person",
+   "threshold": 0.235,
+   "n": 50,
+   "APCER": 0.1,
+   "BPCER": 0.25,
+   "ACER": 0.175,
+   "AUC": 0.925,
+   "accuracy": 0.78,
+   "APCER_by_attack": {
+    "phone": 0.1
+   },
+   "video_level": {
+    "n": 2,
+    "APCER": 0.0,
+    "BPCER": 0.0,
+    "ACER": 0.0
+   }
+  },
+  {
+   "model": "Fractal dimension only",
+   "threshold": 0.525,
+   "n": 614,
+   "APCER": 0.10828025477707007,
+   "BPCER": 0.6293706293706294,
+   "ACER": 0.3688254420738497,
+   "AUC": 0.6043680311196235,
+   "accuracy": 0.7703583061889251,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.11062906724511931,
+    "phone": 0.0
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.5,
+    "BPCER": 0.5,
+    "ACER": 0.5
+   }
+  },
+  {
+   "model": "HF energy only",
+   "threshold": 0.495,
+   "n": 614,
+   "APCER": 0.37367303609341823,
+   "BPCER": 0.5034965034965035,
+   "ACER": 0.43858476979496086,
+   "AUC": 0.565706056151916,
+   "accuracy": 0.5960912052117264,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.38177874186550975,
+    "phone": 0.0
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.75,
+    "BPCER": 0.375,
+    "ACER": 0.5625
+   }
+  },
+  {
+   "model": "FD + HF",
+   "threshold": 0.52,
+   "n": 614,
+   "APCER": 0.06794055201698514,
+   "BPCER": 0.5944055944055944,
+   "ACER": 0.33117307321128975,
+   "AUC": 0.6434902676940892,
+   "accuracy": 0.8094462540716613,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.06941431670281996,
+    "phone": 0.0
+   },
+   "video_level": {
+    "n": 16,
+    "APCER": 0.5,
+    "BPCER": 0.625,
+    "ACER": 0.5625
+   }
+  }
+ ]
+}

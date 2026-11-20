@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>VaultTrust Key</title>
+<style>
+  :root {
+    --bg: #0b1220; --panel: #121b2e; --panel-2: #18233a; --line: #24324f;
+    --text: #e8eefc; --muted: #8a9bbd; --accent: #2dd4bf; --accent-2: #38bdf8;
+    --warn: #fbbf24; --bad: #f87171; --good: #34d399;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 440px; margin: 0 auto; padding: 18px 16px 40px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+  .logo { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #04211d; font-weight: 800; }
+  .pill { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .pill.ok { color: var(--good); border-color: rgba(52,211,153,.35); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 14px; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .amount { font-size: 34px; font-weight: 750; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+  .row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .row:first-of-type { border-top: 0; }
+  .row span:last-child { color: var(--text); text-align: right; word-break: break-all; }
+  .row span:first-child { color: var(--muted); }
+  .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  button { font: inherit; font-weight: 650; border-radius: 12px; padding: 12px; border: 1px solid var(--line);
+    background: var(--panel-2); color: var(--text); cursor: pointer; }
+  button.primary { background: var(--accent); color: #04211d; border-color: transparent; }
+  .code-wrap { display: flex; align-items: center; gap: 16px; }
+  .code { font: 700 38px/1 ui-monospace, "SF Mono", Consolas, monospace; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+  .ring { width: 54px; height: 54px; flex: none; }
+  .ring circle { fill: none; stroke-width: 5; }
+  .ring .track { stroke: var(--line); }
+  .ring .bar { stroke: var(--accent); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .9s linear; }
+  .ring text { fill: var(--muted); font-size: 13px; text-anchor: middle; dominant-baseline: central; }
+  .hint { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+  svg.graph { width: 100%; height: auto; display: block; }
+  .graph .edge { stroke: #2a3a5c; stroke-width: 1; }
+  .graph .node { fill: #33466d; }
+  .graph .walk { stroke: var(--accent); stroke-width: 2.6; fill: none; stroke-linecap: round; }
+  .graph .hot { fill: var(--accent); }
+  .graph .start { fill: var(--warn); }
+  .graph .num { fill: var(--muted); font-size: 8px; text-anchor: middle; dominant-baseline: central; }
+  .path { font: 12px/1.6 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-word; }
+  .path b { color: var(--accent); font-weight: 600; }
+  .banner { border-radius: 12px; padding: 12px 14px; font-weight: 600; margin-bottom: 14px; }
+  .banner.bad { background: rgba(248,113,113,.12); color: var(--bad); border: 1px solid rgba(248,113,113,.3); }
+  .banner.good { background: rgba(52,211,153,.1); color: var(--good); border: 1px solid rgba(52,211,153,.3); }
+  .hidden { display: none !important; }
+  .muted { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand"><div class="logo">V</div>VaultTrust Key</div>
+    <span id="status" class="pill">not paired</span>
+  </header>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <section id="unpaired" class="card hidden">
+    <div class="label" id="unpairedLabel">No account on this phone</div>
+    <p id="unpairedText">To pair, scan a pairing QR code with this phone's camera. On the laptop: sign up, or open <b>Accounts</b> and press <b>Pair a new phone</b>.</p>
+    <p class="hint" id="unpairedWhy"></p>
+    <p class="hint">The pairing key is stored only on this phone, for this exact address. Codes are computed here, offline.</p>
+  </section>
+
+  <section id="chooser" class="card hidden">
+    <div class="label">Account on this phone</div>
+    <select id="acctSel" aria-label="Account" style="width:100%;margin-top:8px;padding:10px;border-radius:10px;background:var(--panel-2);color:var(--text);border:1px solid var(--line);font:inherit"></select>
+    <button id="forget" style="margin-top:10px;width:100%">Remove this account from this phone</button>
+  </section>
+
+  <section id="tx" class="card hidden">
+    <div class="label">Approve transfer?</div>
+    <div class="amount" id="txAmount"></div>
+    <div class="row"><span>To</span><span id="txPayee"></span></div>
+    <div class="row"><span>From</span><span id="txUser"></span></div>
+    <div class="row"><span>Reference</span><span id="txId"></span></div>
+    <div class="btns" id="txBtns">
+      <button id="deny">Deny</button>
+      <button id="approve" class="primary">Approve</button>
+    </div>
+  </section>
+
+  <section id="codeCard" class="card hidden">
+    <div class="label" id="codeLabel">Pairing check code</div>
+    <div class="code-wrap" style="margin-top:8px">
+      <div class="code" id="code">------</div>
+      <svg class="ring" viewBox="0 0 54 54" aria-hidden="true">
+        <circle class="track" cx="27" cy="27" r="22"></circle>
+        <circle class="bar" id="ringBar" cx="27" cy="27" r="22" stroke-dasharray="138.2" stroke-dashoffset="0"></circle>
+        <text x="27" y="27" id="secs">30</text>
+      </svg>
+    </div>
+    <p class="hint" id="codeHint">Only used to confirm pairing on the laptop. To approve a transfer, scan the QR code on the laptop: every transfer gets its own code.</p>
+  </section>
+
+  <section id="walkCard" class="card hidden">
+    <div class="label">How this code was made</div>
+    <svg class="graph" id="graph" viewBox="0 0 320 320" role="img" aria-label="Random walk on the 64-node graph"></svg>
+    <p class="path" id="pathText"></p>
+    <p class="hint">Seed = HMAC-SHA256(K, time-step ‖ SHA256(context)). A 16-step walk over a fixed 64-node small-world graph; the code is SHA-256 of the full path, truncated to 6 digits.</p>
+  </section>
+
+  <p class="hint" id="acct"></p>
+</main>
+
+<script src="walk_otp.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const STORE = "vaulttrust_devices_v2";
+
+  function loadDevices() {
+    try { return JSON.parse(localStorage.getItem(STORE) || "{}"); } catch (e) { return {}; }
+  }
+  function saveDevices(d) {
+    try { localStorage.setItem(STORE, JSON.stringify(d)); } catch (e) {}
+  }
+  function b64urlDecode(s) {
+    s = s.replace(/-/g, "+").replace(/_/g, "/");
+    while (s.length % 4) s += "=";
+    return decodeURIComponent(escape(atob(s)));
+  }
+  function banner(text, kind) {
+    const b = $("banner");
+    b.textContent = text; b.className = "banner " + kind;
+  }
+
+  // A new QR scan into an already-open tab only changes the fragment.
+  window.addEventListener("hashchange", () => location.reload());
+
+  const params = new URLSearchParams(location.hash.slice(1));
+  let devices = loadDevices();
+  let mode = "login", tx = null, account = null, revealed = true;
+
+  if (params.get("pair")) {
+    const email = (params.get("u") || "").toLowerCase();
+    devices[email] = { secret: params.get("pair"), paired_at: Date.now() };
+    saveDevices(devices);
+    history.replaceState(null, "", location.pathname);   // drop the secret from the address bar
+    account = email;
+    banner("Paired with " + email + ". Enter the code below in VaultTrust to finish pairing.", "good");
+  } else if (params.get("removed")) {
+    banner("Removed " + params.get("removed") + " from this phone.", "good");
+  } else if (params.get("tx")) {
+    try {
+      tx = JSON.parse(b64urlDecode(params.get("tx")));
+      account = (tx.u || "").toLowerCase();
+      mode = "tx"; revealed = false;
+    } catch (e) { banner("This approval link is damaged.", "bad"); }
+  }
+
+  const emails = Object.keys(devices);
+  if (!account && params.get("acct")) account = params.get("acct").toLowerCase();
+  if (!account) account = emails[0] || null;
+  const device = account ? devices[account] : null;
+  const here = location.host;
+
+  if (!device) {
+    $("unpaired").classList.remove("hidden");
+    if (account) {
+      banner("This phone has no key for " + account + " at this address (" + here + ").", "bad");
+      $("unpairedLabel").textContent = "Not paired at this address";
+      $("unpairedText").innerHTML = "On the laptop, open <b>Accounts</b> and press <b>Pair a new phone</b> " +
+        "(or <b>Re-pair my phone</b> on the transfer screen), then scan the new QR code.";
+      $("unpairedWhy").textContent = "A phone keeps keys per laptop address. If the laptop joined a different " +
+        "network since you paired, its address changed and the old key is not visible here." +
+        (emails.length ? " Paired at this address: " + emails.join(", ") + "." : "");
+    }
+    return;
+  }
+
+  if (mode !== "tx" && emails.length > 0) {
+    $("chooser").classList.remove("hidden");
+    emails.forEach((e) => {
+      const o = document.createElement("option");
+      o.value = e; o.textContent = e; if (e === account) o.selected = true;
+      $("acctSel").appendChild(o);
+    });
+    $("acctSel").onchange = () => { location.hash = "acct=" + encodeURIComponent($("acctSel").value); };
+    $("forget").onclick = () => {
+      delete devices[account];
+      saveDevices(devices);
+      location.hash = "removed=" + encodeURIComponent(account);
+    };
+  }
+  $("status").textContent = "paired"; $("status").classList.add("ok");
+  $("acct").textContent = "Account: " + account;
+  const secret = WalkOTP.b32ToBytes(device.secret);
+
+  let context = "";
+  if (mode === "tx") {
+    context = WalkOTP.transactionContext(tx.id, tx.a, tx.p);
+    $("tx").classList.remove("hidden");
+    $("txAmount").textContent = "$" + Number(tx.a).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    $("txPayee").textContent = tx.p;
+    $("txUser").textContent = account;
+    $("txId").textContent = tx.id;
+    $("codeLabel").textContent = "Signing code for this transfer only";
+    $("codeHint").textContent = "This code is bound to the amount, payee and reference above. It will not work for any other transfer.";
+    $("approve").onclick = () => { revealed = true; $("txBtns").classList.add("hidden"); render(true); };
+    $("deny").onclick = () => {
+      $("txBtns").classList.add("hidden");
+      banner("Transfer denied. Do not type any code. If you did not start this transfer, someone may have your password.", "bad");
+    };
+  }
+
+  // ---------------- graph drawing ----------------
+  const G = WalkOTP.graph();
+  const N = G.length, R = 140, C = 160;
+  const pos = G.map((_, i) => {
+    const t = (i / N) * Math.PI * 2 - Math.PI / 2;
+    return [C + R * Math.cos(t), C + R * Math.sin(t)];
+  });
+  const svg = $("graph"), NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+  G.forEach((nbrs, i) => nbrs.forEach((j) => { if (j > i) svg.appendChild(el("line", { class: "edge", x1: pos[i][0], y1: pos[i][1], x2: pos[j][0], y2: pos[j][1] })); }));
+  const walkLayer = el("g", {}); svg.appendChild(walkLayer);
+  const nodes = pos.map(([x, y], i) => {
+    const c = el("circle", { class: "node", cx: x, cy: y, r: 4.2 }); svg.appendChild(c);
+    if (i % 8 === 0) { const t = el("text", { class: "num", x: C + (R + 11) * Math.cos((i / N) * Math.PI * 2 - Math.PI / 2), y: C + (R + 11) * Math.sin((i / N) * Math.PI * 2 - Math.PI / 2) }); t.textContent = i; svg.appendChild(t); }
+    return c;
+  });
+
+  let animTimer = null;
+  function drawWalk(path) {
+    clearInterval(animTimer);
+    walkLayer.innerHTML = "";
+    nodes.forEach((n) => n.setAttribute("class", "node"));
+    nodes[path[0]].setAttribute("class", "node start");
+    let k = 1;
+    const parts = path.map(String);
+    $("pathText").innerHTML = "<b>" + parts[0] + "</b>";
+    animTimer = setInterval(() => {
+      if (k >= path.length) { clearInterval(animTimer); return; }
+      const a = pos[path[k - 1]], b = pos[path[k]];
+      walkLayer.appendChild(el("line", { class: "walk", x1: a[0], y1: a[1], x2: b[0], y2: b[1], opacity: 0.35 + 0.65 * (k / path.length) }));
+      nodes[path[k]].setAttribute("class", "node hot");
+      $("pathText").innerHTML = parts.slice(0, k + 1).map((p, i) => i === k ? "<b>" + p + "</b>" : p).join(" → ");
+      k++;
+    }, 140);
+  }
+
+  // ---------------- code loop ----------------
+  let lastCounter = null;
+  function render(force) {
+    const now = Date.now();
+    const counter = WalkOTP.currentCounter(now);
+    const left = 30 - Math.floor(now / 1000) % 30;
+    $("secs").textContent = left;
+    $("ringBar").setAttribute("stroke-dashoffset", String(138.2 * (1 - left / 30)));
+    if (!revealed) return;
+    $("codeCard").classList.remove("hidden");
+    $("walkCard").classList.remove("hidden");
+    if (counter !== lastCounter || force) {
+      lastCounter = counter;
+      const r = WalkOTP.generateOtp(secret, counter, context);
+      $("code").textContent = r.otp.slice(0, 3) + " " + r.otp.slice(3);
+      drawWalk(r.path);
+    }
+  }
+  render(true);
+  setInterval(render, 1000);
+})();
+</script>
+</body>
+</html>

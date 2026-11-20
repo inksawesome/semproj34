@@ -1,0 +1,21 @@
+  embedding 1666 crops...
+D:\Python\Lib\site-packages\insightface\utils\face_align.py:23: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+    200/1666 (112s)
+    400/1666 (232s)
+    600/1666 (365s)
+    800/1666 (492s)
+    1000/1666 (625s)
+    1200/1666 (759s)
+    1400/1666 (888s)
+    1600/1666 (1014s)
+  figure: reports\eval\figures\face_score_distributions.png
+  figure: reports\eval\figures\face_roc.png
+  figure: reports\eval\figures\template_raw_vs_protected.png
+identities 27, genuine 537, impostor 13962
+  raw        EER 0.03%  FAR 0.000%  FRR 2.61%  acc 99.90%  F1 0.9868  AUC 1.0000
+  protected  EER 0.25%  FAR 0.000%  FRR 3.17%  acc 99.88%  F1 0.9839  AUC 1.0000
+  attempt    EER 0.00%  FAR 0.000%  FRR 0.96%  acc 99.96%  F1 0.9952  AUC 1.0000
+  attacks vs own template accepted: 982/986 (99.6%)
+  template corr 0.969, two keys -0.002, revoked max 0.194
+  FTA {'lcc_real': {'missed': 0, 'n': 405, 'rate': 0.0}, 'lcc_spoof': {'missed': 2, 'n': 735, 'rate': 0.0027210884353741495}, 'webcam_real': {'missed': 6, 'n': 273, 'rate': 0.02197802197802198}, 'webcam_spoof': {'missed': 0, 'n': 253, 'rate': 0.0}}

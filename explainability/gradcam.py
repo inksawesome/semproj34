@@ -10,8 +10,9 @@ class GradCAM:
         self.gradients = None
         self.activations = None
         
-        self.target_layer.register_forward_hook(self.save_activation)
-        self.target_layer.register_full_backward_hook(self.save_gradient)
+        self.hook_handles = []
+        self.hook_handles.append(self.target_layer.register_forward_hook(self.save_activation))
+        self.hook_handles.append(self.target_layer.register_full_backward_hook(self.save_gradient))
         
     def save_activation(self, module, input, output):
         self.activations = output
@@ -19,13 +20,13 @@ class GradCAM:
     def save_gradient(self, module, grad_input, grad_output):
         self.gradients = grad_output[0]
         
-    def generate_heatmap(self, input_tensor, target_class=None):
+    def generate_heatmap(self, input_tensor, *args, target_class=None):
         """
         Generates Grad-CAM heatmap for the input tensor.
         input_tensor: [1, C, H, W] tensor
         Returns: normalized heatmap numpy array (H, W) between 0 and 1
         """
-        model_output = self.model(input_tensor)
+        model_output = self.model(input_tensor, *args)
         
         if target_class is None:
             target_class = torch.argmax(model_output, dim=1).item()

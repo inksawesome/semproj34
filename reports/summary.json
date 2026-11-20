@@ -1,0 +1,432 @@
+{
+ "lcc_ablation": [
+  {
+   "model": "v1 original (frozen ImageNet, head trained on ALL images)",
+   "AUC": 1.0,
+   "note": "memorised - these test images were in its training data"
+  },
+  {
+   "model": "v2 spatial + frequency (LCC only)",
+   "AUC": 0.97,
+   "note": "@0.5: APCER 21.5%, BPCER 4.9%"
+  },
+  {
+   "model": "v2 spatial only",
+   "AUC": 0.986,
+   "note": "ablation"
+  },
+  {
+   "model": "v2 frequency only",
+   "AUC": 0.736,
+   "note": "ablation"
+  },
+  {
+   "model": "High-frequency energy only (logistic regression)",
+   "AUC": 0.691,
+   "note": "handcrafted baseline"
+  },
+  {
+   "model": "Fractal dimension only (logistic regression)",
+   "AUC": 0.523,
+   "note": "handcrafted baseline"
+  },
+  {
+   "model": "v3 (+ teammate webcam data)",
+   "AUC": 0.832,
+   "note": "trades LCC accuracy for webcam accuracy"
+  },
+  {
+   "model": "v4 (+ all webcam data)",
+   "AUC": 0.903,
+   "note": ""
+  },
+  {
+   "model": "v5 deployed (+ 10 Oct phone attack, real sign-in)",
+   "AUC": 0.944,
+   "note": "11 Oct"
+  }
+ ],
+ "held_out_person": {
+  "model": "v3",
+  "person": "nilay",
+  "frames": 50,
+  "threshold": 0.235,
+  "APCER": 0.1,
+  "BPCER": 0.25,
+  "ACER": 0.175,
+  "AUC": 0.925
+ },
+ "thresholds": {
+  "v1": 0.5,
+  "v2": 0.5,
+  "v3": 0.235,
+  "v4": 0.16499999999999998,
+  "v5": 0.185
+ },
+ "webcam_clips": [
+  {
+   "clip": "nilay_phone_20261008-163700",
+   "label": "spoof",
+   "v1": {
+    "score": 0.15336069464683533,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.0728500634431839,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.08080735802650452,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.017244350165128708,
+    "pass": false
+   },
+   "v5": {
+    "score": 0.09261618554592133,
+    "pass": false
+   },
+   "trained_on_by": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_phone_20261010-220946",
+   "label": "spoof",
+   "v1": {
+    "score": 0.06360572576522827,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.09148363769054413,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.2123502641916275,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.715408444404602,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.026287950575351715,
+    "pass": false
+   },
+   "trained_on_by": [
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_real_20261008-161718",
+   "label": "real",
+   "v1": {
+    "score": 0.9941726922988892,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.9195564985275269,
+    "pass": true
+   },
+   "v3": {
+    "score": 0.9423083066940308,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.875847578048706,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.8585318326950073,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_real_20261008-200636",
+   "label": "real",
+   "v1": {
+    "score": 0.3607662320137024,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.12294705212116241,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.23464229702949524,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.9589351415634155,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9620146751403809,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_real_20261008-200707",
+   "label": "real",
+   "v1": {
+    "score": 0.8745125532150269,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.17407074570655823,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.3651733994483948,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.9793035984039307,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9514867067337036,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_real_20261008-200829",
+   "label": "real",
+   "v1": {
+    "score": 0.0354016087949276,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.07280963659286499,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.19503819942474365,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.9789085388183594,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9410538673400879,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "nilay_real_20261008-210638 (new)",
+   "label": "real",
+   "v1": {
+    "score": 0.07921390980482101,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.0993538573384285,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.33475881814956665,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.9374526739120483,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.7781872749328613,
+    "pass": true
+   },
+   "trained_on_by": []
+  },
+  {
+   "clip": "nilay_real_20261010-220846",
+   "label": "real",
+   "v1": {
+    "score": 0.08756041526794434,
+    "pass": false
+   },
+   "v2": {
+    "score": 0.0959881842136383,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.1489332616329193,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.8390098810195923,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9769884347915649,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v5"
+   ]
+  },
+  {
+   "clip": "rwitankar_phone_1",
+   "label": "spoof",
+   "v1": {
+    "score": 0.6802228689193726,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.1786738932132721,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.05797795578837395,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.0575876347720623,
+    "pass": false
+   },
+   "v5": {
+    "score": 0.03870176896452904,
+    "pass": false
+   },
+   "trained_on_by": [
+    "v3",
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "rwitankar_phone_2",
+   "label": "spoof",
+   "v1": {
+    "score": 0.7971428632736206,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.21841588616371155,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.061544157564640045,
+    "pass": false
+   },
+   "v4": {
+    "score": 0.04465402662754059,
+    "pass": false
+   },
+   "v5": {
+    "score": 0.022455284371972084,
+    "pass": false
+   },
+   "trained_on_by": [
+    "v3",
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "rwitankar_real_1",
+   "label": "real",
+   "v1": {
+    "score": 0.7049364447593689,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.3849373459815979,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.9390115737915039,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.9149683713912964,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.8506183624267578,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v3",
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "rwitankar_real_2",
+   "label": "real",
+   "v1": {
+    "score": 0.6155054569244385,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.469082236289978,
+    "pass": false
+   },
+   "v3": {
+    "score": 0.9144736528396606,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.9677457213401794,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9473423957824707,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v3",
+    "v4",
+    "v5"
+   ]
+  },
+  {
+   "clip": "rwitankar_real_3",
+   "label": "real",
+   "v1": {
+    "score": 0.7740217447280884,
+    "pass": true
+   },
+   "v2": {
+    "score": 0.5405794978141785,
+    "pass": true
+   },
+   "v3": {
+    "score": 0.9810624718666077,
+    "pass": true
+   },
+   "v4": {
+    "score": 0.9783806204795837,
+    "pass": true
+   },
+   "v5": {
+    "score": 0.9683111310005188,
+    "pass": true
+   },
+   "trained_on_by": [
+    "v3",
+    "v4",
+    "v5"
+   ]
+  }
+ ]
+}

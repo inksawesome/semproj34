@@ -1,119 +1,61 @@
-# Architecture Document: Face Anti-Spoofing (Components 3 & 4)
+# VaultTrust — architecture
 
-This document details the architectural design for **Component 3 (Active Liveness Detection)** and **Component 4 (Explainable AI)** of the Face Anti-Spoofing (FAS) system. These components augment the core spatial-frequency passive liveness system to provide enhanced security and interpretability.
+Step-up authentication for high-value bank transfers, built from the project's components:
 
-## 1. System Overview
+| Component | What it does | Code |
+|---|---|---|
+| 1 · Spatial + frequency FAS | Dual ResNet-18 (RGB face ‖ FFT spectrum) → fused → REAL/SPOOF | `spatial_frequency_model.py`, `frequency_transform.py`, `fas_engine.py`, `training/train_fas_v2.py` |
+| 2 · Passive liveness | Median score over 10 neutral frames, threshold calibrated on validation | `fas_engine.assess_frames` |
+| 3 · Active liveness | 2 random challenges vs. the user's own neutral pose (MediaPipe pose matrix + blendshapes) | `liveness_engine.py` |
+| 4 · Explainable AI | Grad-CAM (both branches), branch attribution, radial spectrum, HF energy, fractal dimension, liveness timeline | `fas_engine.explain`, `explainability/`, `ui_components.py` |
+| Face recognition | RetinaFace + aligned ArcFace (buffalo_l) | `face_engine.py` |
+| Template protection | Chaos-keyed (logistic map) permutation + 512→256 orthonormal projection; cancelable, unlinkable | `biometric_template.py` |
+| Second factor | Random-walk OTP v2, transaction-bound, computed offline on the phone | `semprojOTP/otp_system/walk_otp.py`, `authenticator/` |
 
-The overall FAS system sits between the camera and the face recognition module. While Components 1 & 2 handle passive spatial and frequency analysis, Components 3 & 4 provide:
-- **Active Liveness:** Interactive challenge-response mechanism to thwart static replays and deepfakes.
-- **Explainability (XAI):** Transparent decision-making evidence, exposing *why* a presentation was classified as genuine or spoof.
+## Flows
 
 ```mermaid
 flowchart TD
-    A[Camera Input] --> B[Face Detection & Preprocessing]
-    B --> C[Passive FAS: Spatial & Frequency]
-    
-    subgraph Component 3: Active Liveness
-        D[Challenge Generator] -->|Random Prompt| UI[User Interface]
-        B --> E[Action Verifier: Landmarks/Head Pose]
-        E --> F[Active Liveness Score/Pass]
+    subgraph ENROL[Sign up]
+        E1[Email code] --> E2[Active liveness + passive FAS]
+        E2 -->|REAL| E3[ArcFace embedding] --> E4[Cancelable template<br/>key-seeded chaotic projection]
+        E4 --> E5[Pair phone: QR carries secret K once] --> E6[Confirm first OTP]
     end
-    
-    subgraph Component 4: Explainable AI
-        C -.-> G[Grad-CAM Extractor]
-        C -.-> H[Frequency Visualizer]
-        F -.-> I[Explanation Aggregator]
-        G --> I
-        H --> I
+    subgraph LOGIN[Sign in]
+        L1[Liveness + FAS + template match] --> L2[Session]
     end
-    
-    C --> J[Decision Fusion]
-    F --> J
-    J --> K{REAL / SPOOF?}
-    K -->|Result| I
-    I --> L[Final Explainable Output]
-```
-
-## 2. Component 3: Active Liveness Detection
-
-The active liveness module introduces a randomized challenge-response protocol.
-
-### 2.1 Architecture
-- **Challenge Generator (`challenge.py`)**: Randomly selects a challenge (Blink, Turn Left/Right, Smile, Look Up/Down) to prevent attackers from predicting the required action.
-- **Action Verifier**: Analyzes a short video sequence (or frame buffer) to verify compliance with the challenge.
-  - **Blink Detector (`blink.py`)**: Computes the Eye Aspect Ratio (EAR) from eye landmarks. A blink is detected when EAR drops below a threshold and recovers.
-  - **Head Pose Estimator (`head_pose.py`)**: Calculates Yaw, Pitch, and Roll using facial landmarks to verify directional head movements.
-  - **Smile Detector (`smile.py`)*: Uses mouth landmarks (Mouth Aspect Ratio - MAR) or an expression model to detect smiling.
-
-### 2.2 Data Flow
-```mermaid
-sequenceDiagram
-    participant System
-    participant User
-    participant Verifier
-    
-    System->>User: Display Random Challenge (e.g., "Turn Left")
-    User->>System: Video Frames
-    System->>Verifier: Extract Landmarks (MediaPipe)
-    Verifier->>Verifier: Compute Yaw/Pitch/Roll
-    alt Yaw < -20°
-        Verifier-->>System: Pass (True, Confidence Score)
-    else Timeout / No Movement
-        Verifier-->>System: Fail (False, Confidence Score)
+    subgraph STEPUP[Transfer >= $1,000]
+        S1[Fresh liveness + FAS + template match] -->|pass| S2[QR with tx: ref, amount, payee]
+        S2 --> S3[Phone: OTP = walk HMAC K, T, SHA256 context]
+        S3 --> S4[Server recomputes, T±1, replay check] --> S5[Settle + audit]
+        S1 -->|fail| X[Block + evidence in security log]
     end
 ```
 
-## 3. Component 4: Explainable AI (XAI)
+## Decision fusion
 
-The XAI component interprets the model's decision and formats it for human understanding.
+`passed = liveness_passed AND fas_real_prob >= threshold AND match_score >= 0.40 AND face_found`
 
-### 3.1 Architecture
-- **Grad-CAM Extractor (`gradcam.py`)**: Hooks into the final convolutional layer of the Spatial Encoder (e.g., ResNet-18) to generate a heatmap highlighting regions of interest (e.g., screen edges, moiré patterns).
-- **Frequency Explanation (`frequency_explanation.py`)**: Visualizes the FFT/DWT spectrum or highlights anomalous high-frequency bands that influenced the frequency branch.
-- **Explanation Aggregator (`explanation.py`)**: Collects signals from the passive model, active verifier, and visual explainers to construct a comprehensive evidence report.
+Every rejection carries machine-generated reasons (which check failed, which FAS branch drove it,
+how far the high-frequency energy is from live faces), stored with the transaction.
 
-### 3.2 Output Structure
-The aggregated explanation consists of:
-1. **Decision**: REAL / SPOOF
-2. **Confidence**: Probability score (e.g., 96.2%)
-3. **Evidence List**:
-   - Spatial anomaly detected (Yes/No) + Grad-CAM Heatmap
-   - Frequency anomaly detected (Yes/No) + Spectrum Visualization
-   - Active challenge passed (Yes/No)
-4. **Reasoning**: A heuristic-based conclusion (e.g., "Likely replay attack due to challenge failure and screen-edge artifacts").
+## Random-walk OTP v2
 
-## 4. Phase-Wise Development Flow
-
-According to the project brief's overall timeline, this architecture will be realized across two primary phases:
-
-### Phase 3: Active Liveness Deployment
-- **Phase 3.1: Core Geometry & Verification (EAR/MAR/Pose)**
-- **Phase 3.2: Challenge Sequence & Video Frame Handling**
-
-### Phase 4: Explainable AI Deployment
-- **Phase 4.1: Spatial Hooking & Grad-CAM Extraction**
-- **Phase 4.2: Frequency Visualization**
-- **Phase 4.3: Final Evidence Fusion & UI Formatting**
-
-```mermaid
-gantt
-    title Component 3 & 4 Implementation Phases
-    dateFormat  YYYY-MM-DD
-    axisFormat  %m-%d
-    
-    section Phase 3 (Active Liveness)
-    3.1 Core Logic (EAR/MAR/Pose) : active, 2026-09-18, 2d
-    3.2 Challenge & Video Logic : 2d
-    
-    section Phase 4 (XAI)
-    4.1 Spatial XAI (Grad-CAM) : 2d
-    4.2 Frequency XAI (FFT) : 1d
-    4.3 Fusion & Explanation UI : 2d
+```
+seed   = HMAC-SHA256(K, T_be64 || SHA256(context))       T = floor(unix / 30)
+stream = SHA256(seed || 0) || SHA256(seed || 1) || ...    (rejection sampling, no modulo bias)
+path   = 16-step walk on a fixed 64-node Watts-Strogatz graph (graph also built from SHA-256)
+code   = RFC4226-truncate(SHA256("walk-otp-v2|" || path)) mod 10^6
+context = "" (login / pairing)  |  "TX|ref|amount_cents|payee" (dynamic linking)
 ```
 
-## 5. Integration Strategy
+Pinned by `semprojOTP/otp_system/tests/walk_otp_vectors.json`; `test_vectors.py` checks Python and
+the phone's JavaScript produce identical graphs, paths and codes.
 
-To ensure seamless integration with Components 1 & 2 (being developed by other team members):
-- **Interfaces**: We will define strict Python interfaces/abstract base classes for the liveness verifiers and explanation generators.
-- **Shared Dependencies**: We will standardize on **MediaPipe** for facial landmarks, as it is efficient and covers blink (EAR), head pose, and smile (MAR).
-- **Decoupling**: The XAI module will accept generic feature maps and gradients, ensuring it remains agnostic to the specific architecture chosen for the Spatial/Frequency encoders (whether ResNet, EfficientNet, etc.).
+## Data at rest (`vaulttrust.db`)
+
+* `users`: protected template (256-D), template key + OTP secret (Fernet, master key in `db_key.key`),
+  balance, device_paired
+* `transactions`: ref, parties, amount, status, evidence JSON
+* `audit`: security log shown on the dashboard
+* `used_otps`: accepted (scope, time-step) pairs — replay protection

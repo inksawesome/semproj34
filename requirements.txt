@@ -1,8 +1,17 @@
 streamlit>=1.55
+streamlit-webrtc
+streamlit-autorefresh
+av
 mediapipe
 opencv-python
 numpy
 Pillow
 insightface>=1.0.1
 onnxruntime
+torch
+torchvision
+scikit-learn
+plotly
+qrcode[pil]
+cryptography
 python-dotenv

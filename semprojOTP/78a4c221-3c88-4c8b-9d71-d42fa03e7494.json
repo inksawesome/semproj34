@@ -1,0 +1,67 @@
+{
+  "v": 2,
+  "p": "claude",
+  "m": [
+    [
+      "a",
+      "t1",
+      {
+        "txt": "Combined Workflow\nRegistration\nLogin\nOTP Engine detail (this is your core contribution — worth its own slide):\nThis makes the fractal work do two jobs (biometric transform and OTP seed source) instead of being a side feature — which is a much stronger story for \"why fractals.\"\nHow much to complete by tomorrow\nThis is an initial review, and your rubric already tells you the expected completeness — \"Implementation (50%)\" is the key line. Read it means: at this checkpoint, ~50% implementation is the expected, not a shortfall. Here's how I'd allocate effort against the 40 marks:\nSectionMarksTarget for tomorrowWhyLiterature Review/Rationale5~100%Pure writing/reading, no code needed — do this fullyGap Identification5~100%Same — articulate no dependency on codeObjective Framing5~100%SameProject Plan5~100%Timeline slide, milestones — easy to finishDesign/Methodology10~100%This is the workflow above — diagrams, no implementation requiredImplementation & Analysis10~50%This matches your actual status: random-walk OTP engine working = demoable implementation; fractal module in progress = the other half\nSo the honest, defensible story for tomorrow is: 5 of 6 sections complete, Implementation intentionally at the expected 50% checkpoint — not behind schedule, exactly on the rubric's own expectation.",
+        "c": [
+          "c1",
+          "c2",
+          "c3"
+        ]
+      }
+    ],
+    [
+      "u",
+      "t2",
+      "okay so we have a team of 3, and require a min of 15 papers for lit review, gaps and etc. Give 3 major topics in the project to work on, so the three of us can find 5 papers min in each category. i will share this chat to them and they'll continue the conversation and say what topic they get so you can help them"
+    ],
+    [
+      "a",
+      "t3",
+      "split — map the three topics to the three functional blocks of your architecture so nothing overlaps and each person owns a clean, defensible slice of the literature. Topic 1: Fractal Geometry in Biometrics & Template Protection\n(Feature extraction + protected template + \"why fractals\" rationale)\nFractal dimension / box-counting methods for image/texture feature extraction\nChaos-based cryptographic transforms (logistic map, Mandelbrot/Julia set, IFS) for security\nCancelable biometrics, biohashing, fuzzy vault (template protection schemes — doesn't need to be fractal-specific, needs to justify why protected templates matter)\nFace recognition systems that use fractal/wavelet texture features\nTopic 2: Random Walks on Graphs for OTP / Cryptographic Generation\n(Your core novel contribution — the OTP engine)\nRandom walk algorithms on graphs (theory + applications in security/crypto)\nGraph-based pseudo-random number generation\nHOTP/TOTP standards and how counter/time-synced OTP schemes work (RFC 4226 / RFC 6238 territory)\nGraph theory applications in cryptography (key generation, hash functions from graph structures)\nTopic 3: Face Authentication, Liveness Detection & Multi-Factor Authentication\n(Login flow, anti-spoofing, 2FA/device-confirmation model)\nFace recognition deep learning approaches (FaceNet, ArcFace, embedding-based matching)\nPresentation attack detection / anti-spoofing / liveness detection methods\nMulti-factor authentication frameworks, push-notification/device-confirmation 2FA (Google-prompt-style login)\nBiometric + OTP hybrid authentication systems (papers combining biometrics with a second factor — this one's a good overlap paper that supports the whole merged project)\nEach person needs 5 papers minimum from their topic — that's 15 total, matching your requirement, with the three areas cleanly tiling your architecture (enrollment/template → OTP engine → login/2FA), so the Literature Review section reads as one coherent system rather than three disconnected topics."
+    ],
+    [
+      "u",
+      "t4",
+      "i am doing topics 1 and 2, i'll provide links for the papers i found and you can draft up the lit. review in the given format"
+    ],
+    [
+      "u",
+      "t6",
+      "[Using the Different Maps to Design and Implement a Chaotic Cryptographic Scheme for Image Encryption | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/11135012), [Face recognition and facial expression identification using PCA | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/6779478), [Fuzzy Vault Revisited – Enabling Privacy-Preserving Multi-Modal Biometric Authentication | IEEE Journals & Magazine | IEEE Xplore](https://ieeexplore.ieee.org/document/11222772), [A new dorsal hand vein authentication system based on fractal dimension box counting method - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0030402620312742?via%3Dihub), [Fast Simple Image Encryption Technique Based on Chaos Based System | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/10206390) for the topic 1\n[FPGA Implementation and Comparative Analysis of Chaotic Map Based Pseudo Random Number Generators | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/11510936), [Graph Theory Matrix Approach in Cryptography and Network Security | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/10202460), [Dynamic Website Authentication Using Time-Based One-Time Password (TOTP) for Enhanced Security | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/11011563), [Secure Multi-Factor One-Time Password Generation using PyOTP, SHA-512, and AES-256 Encryption | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/11041781), [Secure chaotic image encryption method using random graph traversal and three step diffusion | Multimedia Tools and Applications | Springer Nature Link](https://link.springer.com/article/10.1007/s11042-023-17418-y) for topic 2draft a lit survey for the project with the title, methodology, research gap"
+    ]
+  ],
+  "t": {
+    "t1": "2026-08-18T19:12:36.886Z",
+    "t2": "2026-08-18T19:12:36.889Z",
+    "t3": "2026-08-18T19:12:36.889Z",
+    "t4": "2026-08-18T19:12:36.889Z",
+    "t6": "2026-08-18T19:12:36.890Z"
+  },
+  "c": {
+    "c1": [
+      "text",
+      "Email → Email Verification\n   ↓\nFace Capture\n   ↓\nFace Feature Extraction  +  Fractal Feature Extraction\n   ↓                              ↓\n   └──────────► Fractal Transform (per-user key) ◄──────────┘\n                        ↓\n              Protected Template → Database\n                        ↓\n         Trusted Device Enrollment (store shared secret,\n         derived from fractal params, on this device)"
+    ],
+    "c2": [
+      "text",
+      "Webcam → Face Capture\n   ↓\nFace + Fractal Feature Extraction\n   ↓\nApply SAME Fractal Transform ──► Compare vs Protected Template\n   ↓\nAI Anti-Spoofing (liveness)\n   ↓\n[REAL + MATCH] ──► Continue          [SPOOF or NO MATCH] ──► Reject\n   ↓\nSecond Factor (OTP)\n   ↓\nShared Secret + Time Counter ──► Random Walk on Graph ──► OTP\n   (computed independently, same way, on BOTH the login device\n    and the trusted device — no network round-trip needed)\n   ↓\nUser confirms/enters matching OTP ──► Website / Session Granted"
+    ],
+    "c3": [
+      "text",
+      "Shared Secret (from fractal params) + Counter/Timestamp\n   ↓\nSeed → drives transition choices in Random Walk on Graph\n   ↓\nWalk Path (sequence of nodes/edges) → Encode/Hash → Truncate\n   ↓\nN-digit OTP"
+    ]
+  },
+  "tokenStats": {
+    "rawChatTokens": 1589,
+    "compressedTokens": 1423,
+    "reductionPercent": 10,
+    "note": "Reduced from ~1,589 to ~1,423 tokens (10% reduction)"
+  },
+  "chatTitle": "Your first chat with Claude",
+  "_context": "=== LLM MEMORY EXPORT ===\nSource: claude | 5 messages\nExported: 2026-08-18\n\nINSTRUCTIONS FOR AI: This file contains a compressed export of a prior\nconversation. Please read the notes and context below, then resume\nnaturally as if continuing from where we left off.\n\n--- CONVERSATION FOLLOWS ---"
+}

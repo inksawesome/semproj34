@@ -1,0 +1,1170 @@
+{
+ "fps": 15.0,
+ "challenge_timeout_s": 9.0,
+ "videos": {
+  "rwitankar_real_1": {
+   "kind": "genuine",
+   "frames": 349,
+   "seconds": 23.3,
+   "face_frames": 349
+  },
+  "rwitankar_real_2": {
+   "kind": "genuine",
+   "frames": 394,
+   "seconds": 26.3,
+   "face_frames": 26
+  },
+  "rwitankar_real_3": {
+   "kind": "genuine",
+   "frames": 449,
+   "seconds": 29.9,
+   "face_frames": 449
+  },
+  "rwitankar_phone_1": {
+   "kind": "replay",
+   "frames": 466,
+   "seconds": 31.1,
+   "face_frames": 466
+  },
+  "rwitankar_phone_2": {
+   "kind": "replay",
+   "frames": 490,
+   "seconds": 32.7,
+   "face_frames": 487
+  }
+ },
+ "achievability": {
+  "genuine": {
+   "BLINK": {
+    "n": 32,
+    "passed": 29,
+    "rate": 0.90625,
+    "median_s": 4.2
+   },
+   "TURN_LEFT": {
+    "n": 32,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "TURN_RIGHT": {
+    "n": 32,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "SMILE": {
+    "n": 32,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "LOOK_UP": {
+    "n": 32,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   }
+  },
+  "replay": {
+   "BLINK": {
+    "n": 43,
+    "passed": 43,
+    "rate": 1.0,
+    "median_s": 3.2
+   },
+   "TURN_LEFT": {
+    "n": 43,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "TURN_RIGHT": {
+    "n": 43,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "SMILE": {
+    "n": 43,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   },
+   "LOOK_UP": {
+    "n": 43,
+    "passed": 0,
+    "rate": 0.0,
+    "median_s": null
+   }
+  }
+ },
+ "pairs": {
+  "genuine": {
+   "passed": 0,
+   "n": 140,
+   "rate": 0.0,
+   "ci": [
+    0.0,
+    0.02670715564899167
+   ]
+  },
+  "replay": {
+   "passed": 0,
+   "n": 240,
+   "rate": 0.0,
+   "ci": [
+    0.0,
+    0.015754489799935698
+   ]
+  }
+ },
+ "pairs_replay_by_pair": {
+  "BLINK+TURN_LEFT": {
+   "passed": 0,
+   "n": 12
+  },
+  "BLINK+TURN_RIGHT": {
+   "passed": 0,
+   "n": 12
+  },
+  "BLINK+SMILE": {
+   "passed": 0,
+   "n": 12
+  },
+  "BLINK+LOOK_UP": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_LEFT+BLINK": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_LEFT+TURN_RIGHT": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_LEFT+SMILE": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_LEFT+LOOK_UP": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_RIGHT+BLINK": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_RIGHT+TURN_LEFT": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_RIGHT+SMILE": {
+   "passed": 0,
+   "n": 12
+  },
+  "TURN_RIGHT+LOOK_UP": {
+   "passed": 0,
+   "n": 12
+  },
+  "SMILE+BLINK": {
+   "passed": 0,
+   "n": 12
+  },
+  "SMILE+TURN_LEFT": {
+   "passed": 0,
+   "n": 12
+  },
+  "SMILE+TURN_RIGHT": {
+   "passed": 0,
+   "n": 12
+  },
+  "SMILE+LOOK_UP": {
+   "passed": 0,
+   "n": 12
+  },
+  "LOOK_UP+BLINK": {
+   "passed": 0,
+   "n": 12
+  },
+  "LOOK_UP+TURN_LEFT": {
+   "passed": 0,
+   "n": 12
+  },
+  "LOOK_UP+TURN_RIGHT": {
+   "passed": 0,
+   "n": 12
+  },
+  "LOOK_UP+SMILE": {
+   "passed": 0,
+   "n": 12
+  }
+ },
+ "replay_blink_only": {
+  "passed": 12,
+  "n": 12,
+  "rate": 1.0
+ },
+ "photo": {
+  "still": {
+   "Timed out on 'Turn your head LEFT'": 6,
+   "Timed out on 'Look UP'": 8,
+   "Timed out on 'Blink twice'": 9,
+   "Timed out on 'Turn your head RIGHT'": 5,
+   "Timed out on 'Smile'": 11,
+   "no calibration": 6
+  },
+  "tilted_single": {
+   "BLINK": {
+    "passed": 0,
+    "n": 15,
+    "rate": 0.0
+   },
+   "TURN_LEFT": {
+    "passed": 0,
+    "n": 15,
+    "rate": 0.0
+   },
+   "TURN_RIGHT": {
+    "passed": 0,
+    "n": 15,
+    "rate": 0.0
+   },
+   "SMILE": {
+    "passed": 0,
+    "n": 15,
+    "rate": 0.0
+   },
+   "LOOK_UP": {
+    "passed": 1,
+    "n": 15,
+    "rate": 0.06666666666666667
+   }
+  },
+  "tilted_pairs": {
+   "passed": 0,
+   "n": 45,
+   "rate": 0.0,
+   "ci": [
+    0.0,
+    0.07865426194064076
+   ]
+  },
+  "still_pairs": {
+   "passed": 0,
+   "n": 45,
+   "rate": 0.0,
+   "ci": [
+    0.0,
+    0.07865426194064076
+   ]
+  },
+  "photos": [
+   "lcc_id147",
+   "lcc_id0",
+   "lcc_id12",
+   "lcc_id5",
+   "lcc_id9",
+   "lcc_id81",
+   "lcc_id164",
+   "lcc_id169",
+   "lcc_id161",
+   "lcc_id152",
+   "rwitankar_real_1",
+   "rwitankar_real_2",
+   "rwitankar_real_3",
+   "nilay_real_20261008-200707",
+   "nilay_real_20261010-220846"
+  ],
+  "tilted_pairs_expected": 0.0
+ },
+ "swap": {
+  "continuity": {
+   "by_gap": {
+    "0.0": {
+     "passed": 36,
+     "n": 72,
+     "rate": 0.5
+    },
+    "0.3": {
+     "passed": 36,
+     "n": 72,
+     "rate": 0.5
+    },
+    "0.6": {
+     "passed": 36,
+     "n": 72,
+     "rate": 0.5
+    },
+    "1.0": {
+     "passed": 0,
+     "n": 72,
+     "rate": 0.0
+    },
+    "1.5": {
+     "passed": 0,
+     "n": 72,
+     "rate": 0.0
+    }
+   },
+   "passed": 108,
+   "n": 360,
+   "rate": 0.3,
+   "ci": [
+    0.25497643810277004,
+    0.3492469382236313
+   ],
+   "fail_reasons": {
+    "Face left the view during the check": 216,
+    "A different face appeared during the check": 36
+   }
+  },
+  "no_continuity": {
+   "by_gap": {
+    "0.0": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "0.3": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "0.6": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "1.0": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "1.5": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    }
+   },
+   "passed": 240,
+   "n": 360,
+   "rate": 0.6666666666666666,
+   "ci": [
+    0.616436142890618,
+    0.7133777101707142
+   ],
+   "fail_reasons": {
+    "Timed out on 'Blink twice'": 120
+   }
+  },
+  "aligned": {
+   "by_gap": {
+    "0.0": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "0.3": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "0.6": {
+     "passed": 48,
+     "n": 72,
+     "rate": 0.6666666666666666
+    },
+    "1.0": {
+     "passed": 0,
+     "n": 72,
+     "rate": 0.0
+    },
+    "1.5": {
+     "passed": 0,
+     "n": 72,
+     "rate": 0.0
+    }
+   },
+   "passed": 144,
+   "n": 360,
+   "rate": 0.4,
+   "ci": [
+    0.3507056643146375,
+    0.45140602384856326
+   ],
+   "fail_reasons": {
+    "Face left the view during the check": 216
+   }
+  }
+ },
+ "genuine_with_continuity": {
+  "passed": 20,
+  "n": 26,
+  "rate": 0.7692307692307693,
+  "max_shift": 0.03,
+  "max_gap": 0.07
+ },
+ "field": {
+  "attempts": 55,
+  "users": 5,
+  "genuine_attempts": 54,
+  "liveness_pass": 42,
+  "liveness_pass_rate": 0.7777777777777778,
+  "liveness_pass_ci": [
+   0.6506107316841219,
+   0.8680471201042104
+  ],
+  "liveness_fail_reasons": {
+   "Timed out on 'Blink twice'.": 4,
+   "Timed out on 'Turn your head RIGHT'.": 4,
+   "Timed out on 'Smile'.": 1,
+   "Timed out on 'Turn your head LEFT'.": 2,
+   "More than one face in view.": 1
+  },
+  "outcome": {
+   "anti-spoofing": 7,
+   "accepted": 33,
+   "liveness": 12,
+   "face match": 2
+  },
+  "per_day": {
+   "08 Oct": {
+    "passed": 8,
+    "n": 8
+   },
+   "09 Oct": {
+    "passed": 20,
+    "n": 32
+   },
+   "10 Oct": {
+    "passed": 8,
+    "n": 8
+   },
+   "12 Oct": {
+    "passed": 6,
+    "n": 6
+   }
+  },
+  "accepted_rate": 0.6111111111111112,
+  "within_3_tries_estimate": 0.9890260631001372,
+  "rows": [
+   {
+    "user": "U1",
+    "event": "ENROLMENT_REJECTED",
+    "day": "08 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U1",
+    "event": "ACCOUNT_CREATED",
+    "day": "08 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "08 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.111,
+    "match": 0.6842083930969238
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "08 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.167,
+    "match": 0.6691617965698242
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "08 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.064,
+    "match": 0.46496012806892395
+   },
+   {
+    "user": "U2",
+    "event": "ENROLMENT_REJECTED",
+    "day": "08 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "08 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.239,
+    "match": 0.6886073350906372
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "08 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.595,
+    "match": 0.7245534658432007
+   },
+   {
+    "user": "U3",
+    "event": "ENROLMENT_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Blink twice'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U3",
+    "event": "ENROLMENT_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Blink twice'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U3",
+    "event": "ENROLMENT_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Blink twice'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U3",
+    "event": "ACCOUNT_CREATED",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U3",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.613,
+    "match": 0.4389198422431946
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": true,
+    "attack": false,
+    "fas": 0.402,
+    "match": 0.2685083746910095
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head RIGHT'.",
+    "fas_failed": false,
+    "match_failed": true,
+    "attack": false,
+    "fas": 0.656,
+    "match": 0.12855954468250275
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head RIGHT'.",
+    "fas_failed": false,
+    "match_failed": true,
+    "attack": false,
+    "fas": 0.564,
+    "match": 0.2699819505214691
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Smile'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.639,
+    "match": 0.4766353964805603
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head RIGHT'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.861,
+    "match": 0.6401220560073853
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head RIGHT'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.688,
+    "match": 0.5688102841377258
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.308,
+    "match": 0.6764326691627502
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.383,
+    "match": 0.7094061374664307
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.467,
+    "match": 0.6123418807983398
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head LEFT'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.847,
+    "match": 0.5070281028747559
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.897,
+    "match": 0.6573684811592102
+   },
+   {
+    "user": "U3",
+    "event": "STEP_UP_PRESENCE_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "More than one face in view.",
+    "fas_failed": false,
+    "match_failed": true,
+    "attack": false,
+    "fas": 0.532,
+    "match": 0.16809454560279846
+   },
+   {
+    "user": "U3",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.959,
+    "match": 0.5332623720169067
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Blink twice'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.489,
+    "match": 0.7659770846366882
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.607,
+    "match": 0.7035297155380249
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.515,
+    "match": 0.7237944602966309
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.268,
+    "match": 0.5632548332214355
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": true,
+    "liveness_reason": "Timed out on 'Turn your head LEFT'.",
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.757,
+    "match": 0.4567330479621887
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.676,
+    "match": 0.527600884437561
+   },
+   {
+    "user": "U3",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.881,
+    "match": 0.5504756569862366
+   },
+   {
+    "user": "U3",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.769,
+    "match": 0.5973380208015442
+   },
+   {
+    "user": "U4",
+    "event": "ACCOUNT_CREATED",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U4",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.551,
+    "match": 0.8043534755706787
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.091,
+    "match": 0.6973307728767395
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_REJECTED",
+    "day": "09 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": true,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.161,
+    "match": 0.7157251834869385
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.278,
+    "match": 0.7598221302032471
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "09 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.403,
+    "match": 0.7323418259620667
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.172,
+    "match": 0.6761991381645203
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.177,
+    "match": 0.7142543792724609
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.104,
+    "match": 0.6906845569610596
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.835,
+    "match": 0.658897340297699
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.927,
+    "match": 0.40554821491241455
+   },
+   {
+    "user": "U5",
+    "event": "ACCOUNT_CREATED",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U5",
+    "event": "REPAIR_REJECTED",
+    "day": "10 Oct",
+    "accepted": false,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": true,
+    "attack": false,
+    "fas": null,
+    "match": null
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.834,
+    "match": 0.49118807911872864
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "10 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": true,
+    "fas": 0.717,
+    "match": 0.5341413021087646
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.532,
+    "match": 0.7848317623138428
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.504,
+    "match": 0.7594342231750488
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.469,
+    "match": 0.7718884944915771
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.23,
+    "match": 0.7168344259262085
+   },
+   {
+    "user": "U1",
+    "event": "LOGIN_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.878,
+    "match": 0.4951527416706085
+   },
+   {
+    "user": "U1",
+    "event": "STEP_UP_PRESENCE_OK",
+    "day": "12 Oct",
+    "accepted": true,
+    "liveness_failed": false,
+    "liveness_reason": null,
+    "fas_failed": false,
+    "match_failed": false,
+    "attack": false,
+    "fas": 0.905,
+    "match": 0.5643807649612427
+   }
+  ]
+ }
+}

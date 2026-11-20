@@ -1,0 +1,1010 @@
+{
+ "test_split": {
+  "n": 634,
+  "real": 153,
+  "lcc_frames": 564,
+  "webcam_frames": 70
+ },
+ "variants": {
+  "spatial": {
+   "threshold": 0.205,
+   "all": {
+    "TP": 131.0,
+    "FN": 22.0,
+    "FP": 205.0,
+    "TN": 276.0,
+    "accuracy": 0.6419558359621451,
+    "precision": 0.3898809523809524,
+    "recall": 0.8562091503267973,
+    "f1": 0.5357873210633947,
+    "specificity": 0.5738045738045738,
+    "FAR": 0.4261954261954262,
+    "FRR": 0.1437908496732026,
+    "HTER": 0.2849931379343144,
+    "threshold": 0.205,
+    "n_pos": 153,
+    "n_neg": 481,
+    "APCER": 0.4261954261954262,
+    "BPCER": 0.1437908496732026,
+    "ACER": 0.2849931379343144,
+    "AUC": 0.8063402769285123,
+    "EER": 0.30105444811327164,
+    "EER_threshold": 0.3701718747615814
+   },
+   "all@0.5": {
+    "TP": 95.0,
+    "FN": 58.0,
+    "FP": 115.0,
+    "TN": 366.0,
+    "accuracy": 0.7271293375394322,
+    "precision": 0.4523809523809524,
+    "recall": 0.6209150326797386,
+    "f1": 0.5234159779614325,
+    "specificity": 0.7609147609147608,
+    "FAR": 0.2390852390852391,
+    "FRR": 0.3790849673202614,
+    "HTER": 0.3090851032027503,
+    "threshold": 0.5,
+    "n_pos": 153,
+    "n_neg": 481,
+    "APCER": 0.2390852390852391,
+    "BPCER": 0.3790849673202614,
+    "ACER": 0.3090851032027503,
+    "AUC": 0.8063402769285123,
+    "EER": 0.30105444811327164,
+    "EER_threshold": 0.3701718747615814
+   },
+   "lcc": {
+    "TP": 96.0,
+    "FN": 7.0,
+    "FP": 203.0,
+    "TN": 258.0,
+    "accuracy": 0.6276595744680851,
+    "precision": 0.3210702341137124,
+    "recall": 0.9320388349514563,
+    "f1": 0.4776119402985075,
+    "specificity": 0.559652928416486,
+    "FAR": 0.4403470715835141,
+    "FRR": 0.06796116504854369,
+    "HTER": 0.2541541183160289,
+    "threshold": 0.205,
+    "n_pos": 103,
+    "n_neg": 461,
+    "APCER": 0.4403470715835141,
+    "BPCER": 0.06796116504854369,
+    "ACER": 0.2541541183160289,
+    "AUC": 0.8835162057999706,
+    "EER": 0.2233641513804941,
+    "EER_threshold": 0.5486765503883362
+   },
+   "lcc@0.5": {
+    "TP": 85.0,
+    "FN": 18.0,
+    "FP": 115.0,
+    "TN": 346.0,
+    "accuracy": 0.7641843971631206,
+    "precision": 0.425,
+    "recall": 0.8252427184466019,
+    "f1": 0.5610561056105611,
+    "specificity": 0.7505422993492408,
+    "FAR": 0.24945770065075923,
+    "FRR": 0.17475728155339806,
+    "HTER": 0.21210749110207866,
+    "threshold": 0.5,
+    "n_pos": 103,
+    "n_neg": 461,
+    "APCER": 0.24945770065075923,
+    "BPCER": 0.17475728155339806,
+    "ACER": 0.21210749110207866,
+    "AUC": 0.8835162057999706,
+    "EER": 0.2233641513804941,
+    "EER_threshold": 0.5486765503883362
+   },
+   "webcam_unseen_person": {
+    "TP": 35.0,
+    "FN": 15.0,
+    "FP": 2.0,
+    "TN": 18.0,
+    "accuracy": 0.7571428571428571,
+    "precision": 0.9459459459459459,
+    "recall": 0.7,
+    "f1": 0.8045977011494254,
+    "specificity": 0.9,
+    "FAR": 0.1,
+    "FRR": 0.3,
+    "HTER": 0.2,
+    "threshold": 0.205,
+    "n_pos": 50,
+    "n_neg": 20,
+    "APCER": 0.1,
+    "BPCER": 0.3,
+    "ACER": 0.2,
+    "AUC": 0.9019999999999999,
+    "EER": 0.19999999999999998,
+    "EER_threshold": 0.15693606436252594
+   },
+   "webcam_unseen_person@0.5": {
+    "TP": 10.0,
+    "FN": 40.0,
+    "FP": 0.0,
+    "TN": 20.0,
+    "accuracy": 0.42857142857142855,
+    "precision": 1.0,
+    "recall": 0.2,
+    "f1": 0.33333333333333337,
+    "specificity": 1.0,
+    "FAR": 0.0,
+    "FRR": 0.8,
+    "HTER": 0.4,
+    "threshold": 0.5,
+    "n_pos": 50,
+    "n_neg": 20,
+    "APCER": 0.0,
+    "BPCER": 0.8,
+    "ACER": 0.4,
+    "AUC": 0.9019999999999999,
+    "EER": 0.19999999999999998,
+    "EER_threshold": 0.15693606436252594
+   },
+   "attempt_all": {
+    "TP": 14.0,
+    "FN": 3.0,
+    "FP": 28.0,
+    "TN": 35.0,
+    "accuracy": 0.6125,
+    "precision": 0.3333333333333333,
+    "recall": 0.8235294117647058,
+    "f1": 0.4745762711864407,
+    "specificity": 0.5555555555555556,
+    "FAR": 0.4444444444444444,
+    "FRR": 0.17647058823529413,
+    "HTER": 0.3104575163398693,
+    "threshold": 0.205,
+    "n_pos": 17,
+    "n_neg": 63,
+    "APCER": 0.4444444444444444,
+    "BPCER": 0.17647058823529413,
+    "ACER": 0.3104575163398693,
+    "AUC": 0.8338001867413634,
+    "EER": 0.2819794584500467,
+    "EER_threshold": 0.5076214671134949,
+    "n_attempts": 80
+   },
+   "attempt_lcc": {
+    "TP": 11.0,
+    "FN": 1.0,
+    "FP": 28.0,
+    "TN": 33.0,
+    "accuracy": 0.6027397260273972,
+    "precision": 0.28205128205128205,
+    "recall": 0.9166666666666666,
+    "f1": 0.4313725490196078,
+    "specificity": 0.540983606557377,
+    "FAR": 0.45901639344262296,
+    "FRR": 0.08333333333333333,
+    "HTER": 0.27117486338797814,
+    "threshold": 0.205,
+    "n_pos": 12,
+    "n_neg": 61,
+    "APCER": 0.45901639344262296,
+    "BPCER": 0.08333333333333333,
+    "ACER": 0.27117486338797814,
+    "AUC": 0.9043715846994536,
+    "EER": 0.23155737704918034,
+    "EER_threshold": 0.5569062829017639,
+    "n_attempts": 73
+   },
+   "attempt_webcam": {
+    "TP": 3.0,
+    "FN": 2.0,
+    "FP": 0.0,
+    "TN": 2.0,
+    "accuracy": 0.7142857142857143,
+    "precision": 1.0,
+    "recall": 0.6,
+    "f1": 0.7499999999999999,
+    "specificity": 1.0,
+    "FAR": 0.0,
+    "FRR": 0.4,
+    "HTER": 0.2,
+    "threshold": 0.205,
+    "n_pos": 5,
+    "n_neg": 2,
+    "APCER": 0.0,
+    "BPCER": 0.4,
+    "ACER": 0.2,
+    "AUC": 1.0,
+    "EER": 0.0,
+    "EER_threshold": 0.17300041019916534,
+    "n_attempts": 7
+   }
+  },
+  "fused": {
+   "threshold": 0.33,
+   "all": {
+    "TP": 131.0,
+    "FN": 22.0,
+    "FP": 275.0,
+    "TN": 206.0,
+    "accuracy": 0.5315457413249212,
+    "precision": 0.3226600985221675,
+    "recall": 0.8562091503267973,
+    "f1": 0.46869409660107336,
+    "specificity": 0.4282744282744283,
+    "FAR": 0.5717255717255717,
+    "FRR": 0.1437908496732026,
+    "HTER": 0.3577582106993872,
+    "threshold": 0.33,
+    "n_pos": 153,
+    "n_neg": 481,
+    "APCER": 0.5717255717255717,
+    "BPCER": 0.1437908496732026,
+    "ACER": 0.3577582106993872,
+    "AUC": 0.8043428043428044,
+    "EER": 0.3020939491527727,
+    "EER_threshold": 0.6399672627449036
+   },
+   "all@0.5": {
+    "TP": 113.0,
+    "FN": 40.0,
+    "FP": 205.0,
+    "TN": 276.0,
+    "accuracy": 0.613564668769716,
+    "precision": 0.3553459119496855,
+    "recall": 0.738562091503268,
+    "f1": 0.4798301486199575,
+    "specificity": 0.5738045738045738,
+    "FAR": 0.4261954261954262,
+    "FRR": 0.26143790849673204,
+    "HTER": 0.34381666734607913,
+    "threshold": 0.5,
+    "n_pos": 153,
+    "n_neg": 481,
+    "APCER": 0.4261954261954262,
+    "BPCER": 0.26143790849673204,
+    "ACER": 0.34381666734607913,
+    "AUC": 0.8043428043428044,
+    "EER": 0.3020939491527727,
+    "EER_threshold": 0.6399672627449036
+   },
+   "lcc": {
+    "TP": 103.0,
+    "FN": 0.0,
+    "FP": 270.0,
+    "TN": 191.0,
+    "accuracy": 0.5212765957446809,
+    "precision": 0.2761394101876676,
+    "recall": 1.0,
+    "f1": 0.4327731092436975,
+    "specificity": 0.4143167028199566,
+    "FAR": 0.5856832971800434,
+    "FRR": 0.0,
+    "HTER": 0.2928416485900217,
+    "threshold": 0.33,
+    "n_pos": 103,
+    "n_neg": 461,
+    "APCER": 0.5856832971800434,
+    "BPCER": 0.0,
+    "ACER": 0.2928416485900217,
+    "AUC": 0.9498557378430175,
+    "EER": 0.14548364677884718,
+    "EER_threshold": 0.804593026638031
+   },
+   "lcc@0.5": {
+    "TP": 101.0,
+    "FN": 2.0,
+    "FP": 204.0,
+    "TN": 257.0,
+    "accuracy": 0.6347517730496454,
+    "precision": 0.33114754098360655,
+    "recall": 0.9805825242718447,
+    "f1": 0.49509803921568635,
+    "specificity": 0.5574837310195228,
+    "FAR": 0.44251626898047725,
+    "FRR": 0.019417475728155338,
+    "HTER": 0.2309668723543163,
+    "threshold": 0.5,
+    "n_pos": 103,
+    "n_neg": 461,
+    "APCER": 0.44251626898047725,
+    "BPCER": 0.019417475728155338,
+    "ACER": 0.2309668723543163,
+    "AUC": 0.9498557378430175,
+    "EER": 0.14548364677884718,
+    "EER_threshold": 0.804593026638031
+   },
+   "webcam_unseen_person": {
+    "TP": 28.0,
+    "FN": 22.0,
+    "FP": 5.0,
+    "TN": 15.0,
+    "accuracy": 0.6142857142857143,
+    "precision": 0.8484848484848485,
+    "recall": 0.56,
+    "f1": 0.6746987951807228,
+    "specificity": 0.75,
+    "FAR": 0.25,
+    "FRR": 0.44,
+    "HTER": 0.345,
+    "threshold": 0.33,
+    "n_pos": 50,
+    "n_neg": 20,
+    "APCER": 0.25,
+    "BPCER": 0.44,
+    "ACER": 0.345,
+    "AUC": 0.751,
+    "EER": 0.29000000000000004,
+    "EER_threshold": 0.24872750043869019
+   },
+   "webcam_unseen_person@0.5": {
+    "TP": 12.0,
+    "FN": 38.0,
+    "FP": 1.0,
+    "TN": 19.0,
+    "accuracy": 0.44285714285714284,
+    "precision": 0.9230769230769231,
+    "recall": 0.24,
+    "f1": 0.38095238095238093,
+    "specificity": 0.95,
+    "FAR": 0.05,
+    "FRR": 0.76,
+    "HTER": 0.405,
+    "threshold": 0.5,
+    "n_pos": 50,
+    "n_neg": 20,
+    "APCER": 0.05,
+    "BPCER": 0.76,
+    "ACER": 0.405,
+    "AUC": 0.751,
+    "EER": 0.29000000000000004,
+    "EER_threshold": 0.24872750043869019
+   },
+   "attempt_all": {
+    "TP": 15.0,
+    "FN": 2.0,
+    "FP": 33.0,
+    "TN": 30.0,
+    "accuracy": 0.5625,
+    "precision": 0.3125,
+    "recall": 0.8823529411764706,
+    "f1": 0.46153846153846156,
+    "specificity": 0.47619047619047616,
+    "FAR": 0.5238095238095238,
+    "FRR": 0.11764705882352941,
+    "HTER": 0.32072829131652664,
+    "threshold": 0.33,
+    "n_pos": 17,
+    "n_neg": 63,
+    "APCER": 0.5238095238095238,
+    "BPCER": 0.11764705882352941,
+    "ACER": 0.32072829131652664,
+    "AUC": 0.8281979458450046,
+    "EER": 0.1970121381886088,
+    "EER_threshold": 0.7845037579536438,
+    "n_attempts": 80
+   },
+   "attempt_lcc": {
+    "TP": 12.0,
+    "FN": 0.0,
+    "FP": 33.0,
+    "TN": 28.0,
+    "accuracy": 0.547945205479452,
+    "precision": 0.26666666666666666,
+    "recall": 1.0,
+    "f1": 0.4210526315789474,
+    "specificity": 0.4590163934426229,
+    "FAR": 0.5409836065573771,
+    "FRR": 0.0,
+    "HTER": 0.27049180327868855,
+    "threshold": 0.33,
+    "n_pos": 12,
+    "n_neg": 61,
+    "APCER": 0.5409836065573771,
+    "BPCER": 0.0,
+    "ACER": 0.27049180327868855,
+    "AUC": 0.959016393442623,
+    "EER": 0.11543715846994537,
+    "EER_threshold": 0.8018244206905365,
+    "n_attempts": 73
+   },
+   "attempt_webcam": {
+    "TP": 3.0,
+    "FN": 2.0,
+    "FP": 0.0,
+    "TN": 2.0,
+    "accuracy": 0.7142857142857143,
+    "precision": 1.0,
+    "recall": 0.6,
+    "f1": 0.7499999999999999,
+    "specificity": 1.0,
+    "FAR": 0.0,
+    "FRR": 0.4,
+    "HTER": 0.2,
+    "threshold": 0.33,
+    "n_pos": 5,
+    "n_neg": 2,
+    "APCER": 0.0,
+    "BPCER": 0.4,
+    "ACER": 0.2,
+    "AUC": 0.8,
+    "EER": 0.45,
+    "EER_threshold": 0.22297215461730957,
+    "n_attempts": 7
+   }
+  }
+ },
+ "handcrafted_source": "reports/metrics.json",
+ "training_log_results": [
+  {
+   "model": "v1 original (frozen, no split)",
+   "threshold": 0.5,
+   "n": 564,
+   "APCER": 0.0368763557483731,
+   "BPCER": 0.0,
+   "ACER": 0.01843817787418655,
+   "AUC": 0.999810458479877,
+   "accuracy": 0.9698581560283688,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.0368763557483731
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 0.42857142857142855,
+    "BPCER": 0.0,
+    "ACER": 0.21428571428571427
+   }
+  },
+  {
+   "model": "v2 spatial + frequency",
+   "threshold": 0.185,
+   "n": 564,
+   "APCER": 0.6963123644251626,
+   "BPCER": 0.0,
+   "ACER": 0.3481561822125813,
+   "AUC": 0.94410631173262,
+   "accuracy": 0.4308510638297872,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.6963123644251626
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 1.0,
+    "BPCER": 0.0,
+    "ACER": 0.5
+   }
+  },
+  {
+   "model": "v2 spatial + frequency @0.5",
+   "threshold": 0.5,
+   "n": 564,
+   "APCER": 0.2646420824295011,
+   "BPCER": 0.04854368932038835,
+   "ACER": 0.15659288587494472,
+   "AUC": 0.94410631173262,
+   "accuracy": 0.774822695035461,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.2646420824295011
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 0.5714285714285714,
+    "BPCER": 0.0,
+    "ACER": 0.2857142857142857
+   }
+  },
+  {
+   "model": "Fractal dimension only",
+   "threshold": 0.525,
+   "n": 564,
+   "APCER": 0.1301518438177874,
+   "BPCER": 0.7669902912621359,
+   "ACER": 0.4485710675399617,
+   "AUC": 0.47680222395383604,
+   "accuracy": 0.7535460992907801,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.1301518438177874
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 0.5714285714285714,
+    "BPCER": 0.5714285714285714,
+    "ACER": 0.5714285714285714
+   }
+  },
+  {
+   "model": "HF energy only",
+   "threshold": 0.495,
+   "n": 564,
+   "APCER": 0.4642082429501085,
+   "BPCER": 0.2524271844660194,
+   "ACER": 0.358317713708064,
+   "AUC": 0.6908156603415959,
+   "accuracy": 0.574468085106383,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.4642082429501085
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 0.8571428571428571,
+    "BPCER": 0.14285714285714285,
+    "ACER": 0.5
+   }
+  },
+  {
+   "model": "FD + HF",
+   "threshold": 0.515,
+   "n": 564,
+   "APCER": 0.10845986984815618,
+   "BPCER": 0.7087378640776699,
+   "ACER": 0.40859886696291303,
+   "AUC": 0.5200176905418782,
+   "accuracy": 0.7819148936170213,
+   "APCER_by_attack": {
+    "lcc_spoof": 0.10845986984815618
+   },
+   "video_level": {
+    "n": 14,
+    "APCER": 0.5714285714285714,
+    "BPCER": 0.5714285714285714,
+    "ACER": 0.5714285714285714
+   }
+  }
+ ],
+ "splits": {
+  "val": {
+   "n": 692,
+   "real": 147,
+   "sources": [
+    "lcc",
+    "webcam"
+   ]
+  },
+  "train": {
+   "n": 2266,
+   "real": 429,
+   "sources": [
+    "lcc",
+    "webcam"
+   ]
+  },
+  "test": {
+   "n": 564,
+   "real": 103,
+   "sources": [
+    "lcc"
+   ]
+  }
+ },
+ "history": {
+  "lcc_ablation": [
+   {
+    "model": "v1 original (frozen ImageNet, head trained on ALL images)",
+    "AUC": 1.0,
+    "note": "memorised - these test images were in its training data"
+   },
+   {
+    "model": "v2 spatial + frequency (LCC only)",
+    "AUC": 0.97,
+    "note": "@0.5: APCER 21.5%, BPCER 4.9%"
+   },
+   {
+    "model": "v2 spatial only",
+    "AUC": 0.986,
+    "note": "ablation"
+   },
+   {
+    "model": "v2 frequency only",
+    "AUC": 0.736,
+    "note": "ablation"
+   },
+   {
+    "model": "High-frequency energy only (logistic regression)",
+    "AUC": 0.691,
+    "note": "handcrafted baseline"
+   },
+   {
+    "model": "Fractal dimension only (logistic regression)",
+    "AUC": 0.523,
+    "note": "handcrafted baseline"
+   },
+   {
+    "model": "v3 (+ teammate webcam data)",
+    "AUC": 0.832,
+    "note": "trades LCC accuracy for webcam accuracy"
+   },
+   {
+    "model": "v4 (+ all webcam data)",
+    "AUC": 0.903,
+    "note": ""
+   },
+   {
+    "model": "v5 deployed (+ 10 Oct phone attack, real sign-in)",
+    "AUC": 0.944,
+    "note": "11 Oct"
+   }
+  ],
+  "held_out_person": {
+   "model": "v3",
+   "person": "nilay",
+   "frames": 50,
+   "threshold": 0.235,
+   "APCER": 0.1,
+   "BPCER": 0.25,
+   "ACER": 0.175,
+   "AUC": 0.925
+  },
+  "thresholds": {
+   "v1": 0.5,
+   "v2": 0.5,
+   "v3": 0.235,
+   "v4": 0.16499999999999998,
+   "v5": 0.185
+  },
+  "webcam_clips": [
+   {
+    "clip": "nilay_phone_20261008-163700",
+    "label": "spoof",
+    "v1": {
+     "score": 0.15336069464683533,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.0728500634431839,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.08080735802650452,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.017244350165128708,
+     "pass": false
+    },
+    "v5": {
+     "score": 0.09261618554592133,
+     "pass": false
+    },
+    "trained_on_by": [
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_phone_20261010-220946",
+    "label": "spoof",
+    "v1": {
+     "score": 0.06360572576522827,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.09148363769054413,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.2123502641916275,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.715408444404602,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.026287950575351715,
+     "pass": false
+    },
+    "trained_on_by": [
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_real_20261008-161718",
+    "label": "real",
+    "v1": {
+     "score": 0.9941726922988892,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.9195564985275269,
+     "pass": true
+    },
+    "v3": {
+     "score": 0.9423083066940308,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.875847578048706,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.8585318326950073,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_real_20261008-200636",
+    "label": "real",
+    "v1": {
+     "score": 0.3607662320137024,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.12294705212116241,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.23464229702949524,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.9589351415634155,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9620146751403809,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_real_20261008-200707",
+    "label": "real",
+    "v1": {
+     "score": 0.8745125532150269,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.17407074570655823,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.3651733994483948,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.9793035984039307,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9514867067337036,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_real_20261008-200829",
+    "label": "real",
+    "v1": {
+     "score": 0.0354016087949276,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.07280963659286499,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.19503819942474365,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.9789085388183594,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9410538673400879,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "nilay_real_20261008-210638 (new)",
+    "label": "real",
+    "v1": {
+     "score": 0.07921390980482101,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.0993538573384285,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.33475881814956665,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.9374526739120483,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.7781872749328613,
+     "pass": true
+    },
+    "trained_on_by": []
+   },
+   {
+    "clip": "nilay_real_20261010-220846",
+    "label": "real",
+    "v1": {
+     "score": 0.08756041526794434,
+     "pass": false
+    },
+    "v2": {
+     "score": 0.0959881842136383,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.1489332616329193,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.8390098810195923,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9769884347915649,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v5"
+    ]
+   },
+   {
+    "clip": "rwitankar_phone_1",
+    "label": "spoof",
+    "v1": {
+     "score": 0.6802228689193726,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.1786738932132721,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.05797795578837395,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.0575876347720623,
+     "pass": false
+    },
+    "v5": {
+     "score": 0.03870176896452904,
+     "pass": false
+    },
+    "trained_on_by": [
+     "v3",
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "rwitankar_phone_2",
+    "label": "spoof",
+    "v1": {
+     "score": 0.7971428632736206,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.21841588616371155,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.061544157564640045,
+     "pass": false
+    },
+    "v4": {
+     "score": 0.04465402662754059,
+     "pass": false
+    },
+    "v5": {
+     "score": 0.022455284371972084,
+     "pass": false
+    },
+    "trained_on_by": [
+     "v3",
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "rwitankar_real_1",
+    "label": "real",
+    "v1": {
+     "score": 0.7049364447593689,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.3849373459815979,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.9390115737915039,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.9149683713912964,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.8506183624267578,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v3",
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "rwitankar_real_2",
+    "label": "real",
+    "v1": {
+     "score": 0.6155054569244385,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.469082236289978,
+     "pass": false
+    },
+    "v3": {
+     "score": 0.9144736528396606,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.9677457213401794,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9473423957824707,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v3",
+     "v4",
+     "v5"
+    ]
+   },
+   {
+    "clip": "rwitankar_real_3",
+    "label": "real",
+    "v1": {
+     "score": 0.7740217447280884,
+     "pass": true
+    },
+    "v2": {
+     "score": 0.5405794978141785,
+     "pass": true
+    },
+    "v3": {
+     "score": 0.9810624718666077,
+     "pass": true
+    },
+    "v4": {
+     "score": 0.9783806204795837,
+     "pass": true
+    },
+    "v5": {
+     "score": 0.9683111310005188,
+     "pass": true
+    },
+    "trained_on_by": [
+     "v3",
+     "v4",
+     "v5"
+    ]
+   }
+  ]
+ }
+}
